@@ -110,6 +110,31 @@ char *conjugate(struct Conjugation conjugation) {
                 strcat(base, "nt");
                 return base;
             }
+        case THIRD:
+            if (conjugation.Person == FIRST_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "o");
+                return base;
+            }
+            if (conjugation.Person == FIRST_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "imus");
+                return base;
+            }
+            if (conjugation.Person == SECOND_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "is");
+                return base;
+            }
+            if (conjugation.Person == SECOND_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "itis");
+                return base;
+            }
+            if (conjugation.Person == THIRD_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "it");
+                return base;
+            }
+            if (conjugation.Person == THIRD_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "unt");
+                return base;
+            }
     }
 }
 
@@ -139,6 +164,6 @@ void *conjugate1st(struct Conjugation conjugation) {
         free(base_copy4);
         free(base_copy5);
     } else {
-        printf("Verb is not of type 1 conjugation.");
+        printf("Verb is not of type 1 conjugation.\n");
     }
 }
