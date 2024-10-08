@@ -2,8 +2,8 @@
 #include "latin/conjugation.h"
 
 int main() {
-    struct Conjugation conjugation = {"audire", FOURTH};
-    // Get the base of the given verb.
-    printf("%s", getBaseOfVerb(conjugation));
+    struct Conjugation conjugation = {"amare", FIRST};
+    printf("%s\n", getBaseOfVerb(conjugation));
+    conjugate1st(conjugation);
     return 0;
 }
