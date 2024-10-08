@@ -8,9 +8,22 @@ enum conjugationType {
     FOURTH
 };
 
+enum person {
+    FIRST_PERSON,
+    SECOND_PERSON,
+    THIRD_PERSON
+};
+
+enum number {
+    SINGULAR,
+    PLURAL
+};
+
 struct Conjugation {
     const char *verb;
     enum conjugationType type;
+    enum person Person;
+    enum number Number;
 };
 
 char *getBaseOfVerb(struct Conjugation conjugation) {
@@ -34,6 +47,44 @@ char *getBaseOfVerb(struct Conjugation conjugation) {
         case FOURTH:
             copy[length - 2] = '\0';
             return copy;
+    }
+}
+
+char *conjugate(struct Conjugation conjugation) {
+    char *base = getBaseOfVerb(conjugation);
+
+    switch (conjugation.type) {
+        case FIRST:
+            if (conjugation.Person == FIRST_PERSON && conjugation.Number == SINGULAR) {
+                int length = strlen(base);
+
+                char *base1st = (char *)malloc((length + 1) * sizeof(char));
+                strcpy(base1st, base);
+
+                base1st[length - 1] = '\0';
+                strcat(base1st, "o");
+                return base1st;
+            }
+            if (conjugation.Person == FIRST_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "mus");
+                return base;
+            }
+            if (conjugation.Person == SECOND_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "s");
+                return base;
+            }
+            if (conjugation.Person == SECOND_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "tis");
+                return base;
+            }
+            if (conjugation.Person == THIRD_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "t");
+                return base;
+            }
+            if (conjugation.Person == THIRD_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "nt");
+                return base;
+            }
     }
 }
 
