@@ -135,6 +135,31 @@ char *conjugate(struct Conjugation conjugation) {
                 strcat(base, "unt");
                 return base;
             }
+        case FOURTH:
+            if (conjugation.Person == FIRST_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "o");
+                return base;
+            }
+            if (conjugation.Person == FIRST_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "mus");
+                return base;
+            }
+            if (conjugation.Person == SECOND_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "s");
+                return base;
+            }
+            if (conjugation.Person == SECOND_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "tis");
+                return base;
+            }
+            if (conjugation.Person == THIRD_PERSON && conjugation.Number == SINGULAR) {
+                strcat(base, "t");
+                return base;
+            }
+            if (conjugation.Person == THIRD_PERSON && conjugation.Number == PLURAL) {
+                strcat(base, "unt");
+                return base;
+            }
     }
 }
 
