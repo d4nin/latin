@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+
 enum conjugationType {
     FIRST, 
     SECOND,
@@ -21,7 +22,10 @@ char *getBaseOfVerb(struct Conjugation conjugation) {
     strcpy(copy, verb);
 
     switch (conjugation.type) {
-        case FIRST || SECOND:
+        case FIRST:
+            copy[length - 2] = '\0';
+            return copy;
+        case SECOND:
             copy[length - 2] = '\0';
             return copy;
         case THIRD:
@@ -33,7 +37,7 @@ char *getBaseOfVerb(struct Conjugation conjugation) {
     }
 }
 
-const char *conjugate(struct Conjugation conjugation) {
-    const char *verb = conjugation.verb;
-
+const char *conjugate1st(struct Conjugation conjugation) {
+    const char *base = getBaseOfVerb(conjugation);
+    
 }
