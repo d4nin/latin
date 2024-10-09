@@ -229,6 +229,22 @@ bool isThirdConjugation(struct Conjugation conjugation) {
     return true;
 }
 
+bool isFourthConjugation(struct Conjugation conjugation) {
+    char *verb = conjugation.verb;
+    int length = strlen(verb);
+
+    char lastThree[4];
+    lastThree[3] = '\0';
+
+    for (int i = 0; i < 3; i++) {
+        lastThree[i] = verb[length - 3 + i];
+    }
+
+    if (strcmp(lastThree, "ire") == 0)
+        return true;
+    else return false;
+}
+
 void *conjugate1st(struct Conjugation conjugation) {
     char *base = getBaseOfVerb(conjugation);
     int length = strlen(base);
