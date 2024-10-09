@@ -180,6 +180,25 @@ bool isFirstConjugation(struct Conjugation conjugation) {
     else return false;
 }
 
+bool isSecondConjugation(struct Conjugation conjugation) {
+    conjugation.Person = SECOND_PERSON;
+    conjugation.Number = SINGULAR;
+
+    char *conjugated = conjugate(conjugation);
+    int length = strlen(conjugated);
+    
+    char lastTwo[3];
+    lastTwo[2] = '\0';
+
+    for (int i = 0; i < 2; i++) {
+        lastTwo[i] = conjugated[length - 2 + i];
+    }
+
+    if (!(strcmp(lastTwo, "is") == 0)) 
+        return true;
+    else return false;
+}
+
 void *conjugate1st(struct Conjugation conjugation) {
     char *base = getBaseOfVerb(conjugation);
     int length = strlen(base);
