@@ -194,9 +194,39 @@ bool isSecondConjugation(struct Conjugation conjugation) {
         lastTwo[i] = conjugated[length - 2 + i];
     }
 
-    if (!(strcmp(lastTwo, "is") == 0)) 
-        return true;
-    else return false;
+    if (strcmp(lastTwo, "is") == 0) 
+        return false;
+    if (strcmp(lastTwo, "as") == 0) 
+        return false;
+    else return true;
+}
+
+bool isThirdConjugation(struct Conjugation conjugation) {
+    conjugation.Person = THIRD_PERSON;
+    conjugation.Number = PLURAL;
+
+    char *conjugated = conjugate(conjugation);
+    int length = strlen(conjugated);
+
+    char lastFour[5];
+    lastFour[4] = '\0';
+
+    for (int i = 0; i < 4; i++) {
+        lastFour[i] = conjugated[length - 4 + i];
+    } 
+
+    char lastThree[4];
+    lastThree[3] = '\0';
+
+    for (int i = 0; i < 3; i++) {
+        lastThree[i] = conjugated[length - 3 + i];
+    }
+
+    if (strcmp(lastFour, "iunt") == 0)
+        return false;
+    if (strcmp(lastThree, "ent") == 0 || strcmp(lastThree, "ant") == 0) 
+        return false;
+    return true;
 }
 
 void *conjugate1st(struct Conjugation conjugation) {
