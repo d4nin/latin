@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 enum conjugationType {
     FIRST, 
@@ -20,7 +21,7 @@ enum number {
 };
 
 struct Conjugation {
-    const char *verb;
+    char *verb;
     enum conjugationType type;
     enum person Person;
     enum number Number;
@@ -161,6 +162,22 @@ char *conjugate(struct Conjugation conjugation) {
                 return base;
             }
     }
+}
+
+bool isFirstConjugation(struct Conjugation conjugation) {
+    char *verb = conjugation.verb;
+    int length = strlen(verb);
+
+    char lastThree[4];
+    lastThree[3] = '\0';
+   
+    for (int i = 0; i < 3; i++) {
+        lastThree[i] = verb[length - 3 + i];
+    }
+    
+    if (strcmp(lastThree, "are") == 0) 
+        return true;
+    else return false;
 }
 
 void *conjugate1st(struct Conjugation conjugation) {
