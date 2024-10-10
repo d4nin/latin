@@ -272,7 +272,7 @@ void conjugateFirst(struct Conjugation conjugation) {
         free(base_copy4);
         free(base_copy5);
     } else {
-        printf("Verb is not of type 1 conjugation.\n");
+        printf("%s is not of type 1 conjugation.\n", conjugation.verb);
     }
 }
 
@@ -297,7 +297,7 @@ void conjugateSecond(struct Conjugation conjugation) {
         free(base_copy4);
         free(base_copy5);
     } else {
-        printf("Verb is not of type 2 conjugation.\n");
+        printf("%s is not of type 2 conjugation.\n", conjugation.verb);
     }
 }
 
@@ -322,7 +322,7 @@ void conjugateThird(struct Conjugation conjugation) {
         free(base_copy4);
         free(base_copy5);
     } else {
-        printf("Verb is not of type 3 conjugation.\n");
+        printf("%s is not of type 3 conjugation.\n", conjugation.verb);
     }
 }
 
@@ -347,6 +347,6 @@ void conjugateFourth(struct Conjugation conjugation) {
         free(base_copy4);
         free(base_copy5);
     } else {
-        printf("Verb is not of type 4 conjugation.");
+        printf("%s is not of type 4 conjugation.", conjugation.verb);
     }
 }
