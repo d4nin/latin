@@ -297,6 +297,31 @@ void conjugate2nd(struct Conjugation conjugation) {
         free(base_copy4);
         free(base_copy5);
     } else {
-        printf("Verb is not of type 2 conjugation.");
+        printf("Verb is not of type 2 conjugation.\n");
+    }
+}
+
+void conjugate3rd(struct Conjugation conjugation) {
+    char *base = getBaseOfVerb(conjugation);
+
+    if (isThirdConjugation(conjugation)) {
+        char *base_copy1 = strdup(base);
+        char *base_copy2 = strdup(base);
+        char *base_copy3 = strdup(base);
+        char *base_copy4 = strdup(base);
+        char *base_copy5 = strdup(base);
+
+        printf("verb: %s\n", conjugation.verb);
+        printf("1.%s\t %s\n", strcat(base, "o"), strcat(base_copy1, "imus"));
+        printf("2.%s\t %s\n", strcat(base_copy2, "is"), strcat(base_copy3, "itis"));
+        printf("3.%s\t %s\n", strcat(base_copy4, "it"), strcat(base_copy5, "unt"));
+
+        free(base_copy1);
+        free(base_copy2);
+        free(base_copy3);
+        free(base_copy4);
+        free(base_copy5);
+    } else {
+        printf("Verb is not of type 3 conjugation.\n");
     }
 }
