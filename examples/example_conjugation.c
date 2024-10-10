@@ -6,7 +6,7 @@
 
 int main() {
     // setting up the verb
-    struct Conjugation conjugation = {"habere", SECOND, FIRST_PERSON, SINGULAR};
+    struct Conjugation conjugation = {"scribere", THIRD, THIRD_PERSON, SINGULAR};
     
     // get the verb's base
     char *base = getBaseOfVerb(conjugation);
@@ -41,5 +41,8 @@ int main() {
 
     // print out the entirety of the 2nd type of conjugation in the present form
     conjugate2nd(conjugation);
+
+    // print out the entirety of the 3rd type of conjugation in the present form
+    conjugate3rd(conjugation);
     return 0;
 }
