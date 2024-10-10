@@ -255,7 +255,7 @@ void *conjugate1st(struct Conjugation conjugation) {
     strcpy(base1st, base);
     base1st[length - 1] = '\0';
 
-    if (conjugation.type == FIRST) {
+    if (isFirstConjugation(conjugation)) {
         char *base_copy1 = strdup(base);
         char *base_copy2 = strdup(base);
         char *base_copy3 = strdup(base);
