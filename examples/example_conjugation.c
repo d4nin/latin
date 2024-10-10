@@ -6,7 +6,7 @@
 
 int main() {
     // setting up the verb
-    struct Conjugation conjugation = {"amare", FIRST, FIRST_PERSON, SINGULAR};
+    struct Conjugation conjugation = {"habere", SECOND, FIRST_PERSON, SINGULAR};
     
     // get the verb's base
     char *base = getBaseOfVerb(conjugation);
@@ -35,5 +35,11 @@ int main() {
     if (isFourthConjugation(conjugation))
         printf("True!\n");
     else printf("False.\n");
+
+    // print out the entirety of the 1st type of conjugation in the present form
+    conjugate1st(conjugation);
+
+    // print out the entirety of the 2nd type of conjugation in the present form
+    conjugate2nd(conjugation);
     return 0;
 }
