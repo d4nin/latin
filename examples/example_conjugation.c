@@ -6,7 +6,7 @@
 
 int main() {
     // setting up the verb
-    struct Conjugation conjugation = {"scribere", THIRD, THIRD_PERSON, SINGULAR};
+    struct Conjugation conjugation = {"legere", THIRD, THIRD_PERSON, SINGULAR};
     
     // get the verb's base
     char *base = getBaseOfVerb(conjugation);
@@ -37,12 +37,15 @@ int main() {
     else printf("False.\n");
 
     // print out the entirety of the 1st type of conjugation in the present form
-    conjugate1st(conjugation);
+    conjugateFirst(conjugation);
 
     // print out the entirety of the 2nd type of conjugation in the present form
-    conjugate2nd(conjugation);
+    conjugateSecond(conjugation);
 
     // print out the entirety of the 3rd type of conjugation in the present form
-    conjugate3rd(conjugation);
+    conjugateThird(conjugation);
+
+    // print out hte entirety of the 4th type of conjugation in the present form
+    conjugateFourth(conjugation);
     return 0;
 }
