@@ -246,7 +246,7 @@ bool isFourthConjugation(struct Conjugation conjugation) {
     else return false;
 }
 
-void *conjugate1st(struct Conjugation conjugation) {
+void conjugateFirst(struct Conjugation conjugation) {
     char *base = getBaseOfVerb(conjugation);
     int length = strlen(base);
     
@@ -276,7 +276,7 @@ void *conjugate1st(struct Conjugation conjugation) {
     }
 }
 
-void conjugate2nd(struct Conjugation conjugation) {
+void conjugateSecond(struct Conjugation conjugation) {
     char *base = getBaseOfVerb(conjugation);
 
     if (isSecondConjugation(conjugation)) {
@@ -301,7 +301,7 @@ void conjugate2nd(struct Conjugation conjugation) {
     }
 }
 
-void conjugate3rd(struct Conjugation conjugation) {
+void conjugateThird(struct Conjugation conjugation) {
     char *base = getBaseOfVerb(conjugation);
 
     if (isThirdConjugation(conjugation)) {
