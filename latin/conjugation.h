@@ -49,7 +49,7 @@ char *getBaseOfVerb(struct Conjugation conjugation) {
     }
 }
 
-char *conjugate(struct Conjugation conjugation) {
+char *conjugateVerb(struct Conjugation conjugation) {
     char *base = getBaseOfVerb(conjugation);
 
     switch (conjugation.type) {
