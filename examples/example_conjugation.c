@@ -12,7 +12,7 @@ int main() {
     char *base = getBaseOfVerb(conjugation);
     
     // conjugate the verb in the present form
-    char *conjugated = conjugate(conjugation);
+    char *conjugated = conjugateVerb(conjugation);
 
     printf("verb's base: %s\nconjugated verb: %s\n", base, conjugated);
     
