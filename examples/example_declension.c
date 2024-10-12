@@ -19,7 +19,7 @@ void firstDeclension() {
 
 void secondDeclension() {
     // setting up noun of second declension
-    struct declensionSecond second = {"populus", MASCULINUM, SINGULAR, NOMINATIVE, 1};
+    struct declensionSecond second = {"bellum", NEUTRUM, PLURAL, GENITIVE, 1};
     
     // check if the noun is of second declension
     if (isNounSecondDeclension(second))
@@ -28,10 +28,12 @@ void secondDeclension() {
     
     // get the second declension noun's stem 
     printf("%s\n", getStemOfNounSecondDeclension(second));
+
+    printf("%s\n", declineNounSecondDeclension(second));
 }
 
 int main() {
-    // firstDeclension();
+    firstDeclension();
     secondDeclension();
     return 0;
 }
