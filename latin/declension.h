@@ -170,6 +170,59 @@ char *declineNoun(struct Declension declension) {
                             }
                     }
                 }
+                if (strcmp(lastTwo, "er") == 0) {
+                    switch (declension.casus) {
+                        case NOMINATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "er");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "ri");
+                                return declinedNoun;
+                            }
+                        case GENITIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "ri");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "rorum");
+                                return declinedNoun;
+                            }
+                        case DATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "ro");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "ris");
+                                return declinedNoun;
+                            }
+                        case ACCUSATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "rum");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "ros");
+                                return declinedNoun;
+                            }
+                        case VOCATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "er");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "ri");
+                                return declinedNoun;
+                            }
+                        case ABLATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "ro");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "ris");
+                                return declinedNoun;
+                            }
+                    }
+                }
             }
+            
     }
 }
