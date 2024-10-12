@@ -105,5 +105,71 @@ char *declineNoun(struct Declension declension) {
                         return declinedNoun;
                 }  
             }
+        case SECOND:
+            if (declension.gender == FEMININUM) 
+                return "noun cannot be of gender femininum.";
+            if (declension.gender == MASCULINUM) {
+                char *noun = declension.noun;
+                int length = strlen(noun);
+
+                char lastTwo[3];
+                lastTwo[2] = '\0';
+
+                for (int i = 0; i < 2; i++) 
+                    lastTwo[i] = noun[length - 2 + i];
+                
+                if (strcmp(lastTwo, "us") == 0) {
+                    switch (declension.casus) {
+                        case NOMINATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "us");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "i");
+                                return declinedNoun;
+                            }
+                        case GENITIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "i");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "orum");
+                                return declinedNoun;
+                            }
+                        case DATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "o");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "is");
+                                return declinedNoun;
+                            }
+                        case ACCUSATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "um");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "os");
+                                return declinedNoun;
+                            }
+                        case VOCATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "e");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "i");
+                                return declinedNoun;
+                            }
+                        case ABLATIVE:
+                            if (declension.number == SINGULAR) {
+                                declinedNoun = strcat(base, "o");
+                                return declinedNoun;
+                            } else {
+                                declinedNoun = strcat(base, "is");
+                                return declinedNoun;
+                            }
+                    }
+                }
+            }
     }
 }
