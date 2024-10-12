@@ -27,17 +27,6 @@ struct declensionFirst {
     enum Case casus; 
 };
 
-char *getStemOfNounFirstDeclension(struct declensionFirst first) {
-    char *noun = first.noun;
-    int length = strlen(noun);
-
-    char *copy = (char *)malloc((length + 1) * sizeof(char));
-    strcpy(copy, noun);
-
-    copy[length - 1] = '\0';
-    return copy;
-}
-
 bool isNounFirstDeclension(struct declensionFirst first) {
     char *noun = first.noun;
     int length = strlen(noun);
@@ -51,6 +40,24 @@ bool isNounFirstDeclension(struct declensionFirst first) {
     if ((strcmp(lastOne, "a") == 0) && (first.gender == FEMININUM || first.gender == MASCULINUM))
         return true;
     else return false;
+}
+
+
+char *getStemOfNounFirstDeclension(struct declensionFirst first) {
+    if (isNounFirstDeclension(first)) {
+        char *noun = first.noun;
+        int length = strlen(noun);
+
+        char *copy = (char *)malloc((length + 1) * sizeof(char));
+        strcpy(copy, noun);
+
+        copy[length - 1] = '\0';
+        return copy;
+    } else {
+        char *error = (char *)malloc((strlen(first.noun) + 30) * sizeof(char));
+        sprintf(error, "%s is not of first declension.", first.noun); 
+        return error;
+    };
 }
 
 char *declineNounFirstDeclension(struct declensionFirst first) {
@@ -92,6 +99,8 @@ char *declineNounFirstDeclension(struct declensionFirst first) {
             }
         }
     } else {
-        return strcat(first.noun, " is not of first declension.");
+        char *error = (char *)malloc((strlen(first.noun) + 30) * sizeof(char));
+        sprintf(error, "%s is not of first declension.", first.noun); 
+        return error;
     }
 }
