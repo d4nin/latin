@@ -9,7 +9,7 @@ void firstDeclension() {
         printf("True!\n");
     else printf("False!\n");
 
-    // get the base of noun of first declension
+    // get the stem of noun of first declension
     char *baseFirst = getStemOfNounFirstDeclension(first);
     printf("%s\n", baseFirst);
 
@@ -19,15 +19,19 @@ void firstDeclension() {
 
 void secondDeclension() {
     // setting up noun of second declension
-    struct declensionSecond second = {"bellum", MASCULINUM, SINGULAR, NOMINATIVE, 0};
+    struct declensionSecond second = {"populus", MASCULINUM, SINGULAR, NOMINATIVE, 1};
+    
     // check if the noun is of second declension
     if (isNounSecondDeclension(second))
         printf("Correct!\n");
     else printf("Incorrect!\n");
+    
+    // get the second declension noun's stem 
+    printf("%s\n", getStemOfNounSecondDeclension(second));
 }
 
 int main() {
-    firstDeclension();
+    // firstDeclension();
     secondDeclension();
     return 0;
 }
