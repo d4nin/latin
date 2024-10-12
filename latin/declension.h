@@ -27,6 +27,14 @@ struct declensionFirst {
     enum Case casus; 
 };
 
+struct declensionSecond {
+    char *noun;
+    enum Gender gender;
+    enum Number number;
+    enum Case casus;
+    int retension;
+};
+
 bool isNounFirstDeclension(struct declensionFirst first) {
     char *noun = first.noun;
     int length = strlen(noun);
@@ -42,6 +50,27 @@ bool isNounFirstDeclension(struct declensionFirst first) {
     else return false;
 }
 
+bool isNounSecondDeclension(struct declensionSecond second) {
+    char *noun = second.noun;
+    int length = strlen(noun);
+
+    char lastTwo[3];
+    lastTwo[2] = '\0';
+
+    for (int i = 0; i < 2; i++)
+        lastTwo[i] = noun[length - 2 + i];
+    if (second.gender == FEMININUM)
+        return false;
+    if (strcmp(lastTwo, "us") == 0 && second.gender == MASCULINUM)
+        return true;
+    if (strcmp(lastTwo, "er") == 0 && second.gender == MASCULINUM)
+        return true;
+    if (strcmp(lastTwo, "ir") == 0 && second.gender == MASCULINUM)
+        return true;
+    if (strcmp(lastTwo, "um") == 0 && second.gender == NEUTRUM)
+        return true;
+    return false;
+}
 
 char *getStemOfNounFirstDeclension(struct declensionFirst first) {
     if (isNounFirstDeclension(first)) {
