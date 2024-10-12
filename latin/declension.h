@@ -47,6 +47,9 @@ char *getBaseOfNoun(struct Declension declension) {
         case FIRST:
             copy[length - 1] = '\0';
             return copy;
+        case SECOND:
+            copy[length - 2] = '\0';
+            return copy;
     }
 }
 
