@@ -52,3 +52,46 @@ bool isNounFirstDeclension(struct declensionFirst first) {
         return true;
     else return false;
 }
+
+char *declineNounFirstDeclension(struct declensionFirst first) {
+    char *stem = getStemOfNounFirstDeclension(first);
+    char *declinedNoun;
+
+    if (isNounFirstDeclension(first)) {
+        if (first.number == SINGULAR) {
+            switch (first.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "a");
+                    return declinedNoun;
+                case GENITIVE:
+                case DATIVE:
+                    declinedNoun = strcat(stem, "ae");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "am");
+                    return declinedNoun;
+            }
+        }
+        if (first.number == PLURAL) {
+            switch (first.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "ae");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "is");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "arum");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "as");
+            }
+        }
+    } else {
+        return strcat(first.noun, " is not of first declension.");
+    }
+}
