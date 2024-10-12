@@ -223,6 +223,36 @@ char *declineNoun(struct Declension declension) {
                     }
                 }
             }
-            
+            if (declension.gender == NEUTRUM) {
+                switch (declension.casus) {
+                    case NOMINATIVE:
+                    case ACCUSATIVE:
+                    case VOCATIVE:
+                        if (declension.number == SINGULAR) {
+                            declinedNoun = strcat(base, "um");
+                            return declinedNoun;
+                        } else {
+                            declinedNoun = strcat(base, "a");
+                            return declinedNoun;
+                        }
+                    case GENITIVE:
+                        if (declension.number == SINGULAR) {
+                            declinedNoun = strcat(base, "i");
+                            return declinedNoun;
+                        } else {
+                            declinedNoun = strcat(base, "orum");
+                            return declinedNoun;
+                        }
+                    case DATIVE:
+                    case ABLATIVE:
+                        if (declension.number == SINGULAR) {
+                            declinedNoun = strcat(base, "o");
+                            return declinedNoun;
+                        } else {
+                            declinedNoun = strcat(base, "is");
+                            return declinedNoun;
+                        }
+                }
+            }
     }
 }
