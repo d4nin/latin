@@ -2,7 +2,7 @@
 
 int main() {
     // setting up noun of first declension
-    struct declensionFirst first = {"terra", NEUTRUM, SINGULAR, NOMINATIVE};
+    struct declensionFirst first = {"terra", FEMININUM, PLURAL, ABLATIVE};
 
     // get the base of noun of first declension
     char *baseFirst = getStemOfNounFirstDeclension(first);
@@ -12,4 +12,7 @@ int main() {
     if (isNounFirstDeclension(first))
         printf("it true\n");
     else printf("it false :(\n");
+
+    // decline the noun of first declension
+    printf("%s\n", declineNounFirstDeclension(first));
 }
