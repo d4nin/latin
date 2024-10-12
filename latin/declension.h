@@ -64,28 +64,23 @@ char *declineNoun(struct Declension declension) {
             if (declension.number == SINGULAR) {
                 switch (declension.casus) {
                     case NOMINATIVE:
+                    case VOCATIVE:
+                    case ABLATIVE:
                         declinedNoun = strcat(base, "a");
                         return declinedNoun;
                     case GENITIVE:
-                        declinedNoun = strcat(base, "ae");
-                        return declinedNoun;
                     case DATIVE:
                         declinedNoun = strcat(base, "ae");
                         return declinedNoun;
                     case ACCUSATIVE:
                         declinedNoun = strcat(base, "am");
                         return declinedNoun;
-                    case VOCATIVE:
-                        declinedNoun = strcat(base, "a");
-                        return declinedNoun;
-                    case ABLATIVE:
-                        declinedNoun = strcat(base, "a");
-                        return declinedNoun;
                 }
             }
             if (declension.number == PLURAL) {
                 switch (declension.casus) {
                     case NOMINATIVE:
+                    case VOCATIVE:
                         declinedNoun = strcat(base, "ae");
                         return declinedNoun;
                     case GENITIVE:
@@ -94,14 +89,9 @@ char *declineNoun(struct Declension declension) {
                     case DATIVE:
                         declinedNoun = strcat(base, "is");
                         return declinedNoun;
+                    case ABLATIVE:
                     case ACCUSATIVE:
                         declinedNoun = strcat(base, "as");
-                        return declinedNoun;
-                    case VOCATIVE:
-                        declinedNoun = strcat(base, "ae");
-                        return declinedNoun;
-                    case ABLATIVE: 
-                        declinedNoun = strcat(base, "is");
                         return declinedNoun;
                 }  
             }
