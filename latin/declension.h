@@ -152,3 +152,149 @@ char *declineNounFirstDeclension(struct declensionFirst first) {
         return error;
     }
 }
+
+char *declineNounSecondDeclension(struct declensionSecond second) {
+    char *stem = getStemOfNounSecondDeclension(second);
+    char *declinedNoun;
+
+    if (isNounSecondDeclension(second)) {
+        char *noun = second.noun;
+        int length = strlen(noun);
+
+        char lastTwo[3];
+        lastTwo[2] = '\0';
+
+        for (int i = 0; i < 2; i++) 
+            lastTwo[i] = noun[length - 2 + i];
+
+        if ((second.retension == 0 || strcmp(noun, "vir") == 0) && second.number == SINGULAR) {
+            switch (second.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    declinedNoun = stem;
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "o");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "i");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "um");
+                    return declinedNoun;
+            }
+        } 
+        if (((second.retension == 0 || strcmp(noun, "vir") == 0) && second.number == PLURAL)
+            || (strcmp(lastTwo, "us") == 0 && second.number == PLURAL)) {
+            switch (second.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "i");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "is");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "orum");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "os");
+                    return declinedNoun;
+            }
+        }
+        if (strcmp(lastTwo, "us") == 0 && second.number == SINGULAR) {
+            switch (second.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "o");
+                    return declinedNoun;
+                case NOMINATIVE:
+                    declinedNoun = strcat(stem, "us");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "i");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "um");
+                    return declinedNoun;
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "e");
+                    return declinedNoun;
+            }
+        }
+        if (strcmp(lastTwo, "er") == 0 && second.number == SINGULAR) {
+            switch (second.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "er");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "ro");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "ri");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "rum");
+                    return declinedNoun;
+            }
+        }
+        if (strcmp(lastTwo, "er") == 0 && second.number == PLURAL) {
+            switch (second.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "ri");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "ris");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "rorum");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "ros");
+                    return declinedNoun;
+            }
+        }
+        if (strcmp(lastTwo, "um") == 0 && second.number == SINGULAR) {
+            switch (second.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "um");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "o");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "i");
+                    return declinedNoun;
+            }
+        }
+        if (strcmp(lastTwo, "um") == 0 && second.number == PLURAL) {
+            switch (second.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "a");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "is");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "orum");
+                    return declinedNoun;
+            }
+        }
+    } else {
+        char *error = (char *)malloc((strlen(second.noun) + 50) * sizeof(char));
+        sprintf(error, "%s is not of second declension.", second.noun);
+        return error;
+    }
+}
