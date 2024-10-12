@@ -137,6 +137,7 @@ char *declineNoun(struct Declension declension) {
                                 return declinedNoun;
                             }
                         case DATIVE:
+                        case ABLATIVE:
                             if (declension.number == SINGULAR) {
                                 declinedNoun = strcat(base, "o");
                                 return declinedNoun;
@@ -160,19 +161,12 @@ char *declineNoun(struct Declension declension) {
                                 declinedNoun = strcat(base, "i");
                                 return declinedNoun;
                             }
-                        case ABLATIVE:
-                            if (declension.number == SINGULAR) {
-                                declinedNoun = strcat(base, "o");
-                                return declinedNoun;
-                            } else {
-                                declinedNoun = strcat(base, "is");
-                                return declinedNoun;
-                            }
                     }
                 }
                 if (strcmp(lastTwo, "er") == 0) {
                     switch (declension.casus) {
                         case NOMINATIVE:
+                        case VOCATIVE:
                             if (declension.number == SINGULAR) {
                                 declinedNoun = strcat(base, "er");
                                 return declinedNoun;
@@ -189,6 +183,7 @@ char *declineNoun(struct Declension declension) {
                                 return declinedNoun;
                             }
                         case DATIVE:
+                        case ABLATIVE:
                             if (declension.number == SINGULAR) {
                                 declinedNoun = strcat(base, "ro");
                                 return declinedNoun;
@@ -202,22 +197,6 @@ char *declineNoun(struct Declension declension) {
                                 return declinedNoun;
                             } else {
                                 declinedNoun = strcat(base, "ros");
-                                return declinedNoun;
-                            }
-                        case VOCATIVE:
-                            if (declension.number == SINGULAR) {
-                                declinedNoun = strcat(base, "er");
-                                return declinedNoun;
-                            } else {
-                                declinedNoun = strcat(base, "ri");
-                                return declinedNoun;
-                            }
-                        case ABLATIVE:
-                            if (declension.number == SINGULAR) {
-                                declinedNoun = strcat(base, "ro");
-                                return declinedNoun;
-                            } else {
-                                declinedNoun = strcat(base, "ris");
                                 return declinedNoun;
                             }
                     }
