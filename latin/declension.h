@@ -37,3 +37,18 @@ char *getStemOfNounFirstDeclension(struct declensionFirst first) {
     copy[length - 1] = '\0';
     return copy;
 }
+
+bool isNounFirstDeclension(struct declensionFirst first) {
+    char *noun = first.noun;
+    int length = strlen(noun);
+
+    char lastOne[2];
+    lastOne[1] = '\0';
+
+    for(int i = 0; i < 1; i++)
+        lastOne[i] = noun[length - 1 + i];
+    
+    if ((strcmp(lastOne, "a") == 0) && (first.gender == FEMININUM || first.gender == MASCULINUM))
+        return true;
+    else return false;
+}
