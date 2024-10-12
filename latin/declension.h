@@ -89,6 +89,25 @@ char *getStemOfNounFirstDeclension(struct declensionFirst first) {
     };
 }
 
+char *getStemOfNounSecondDeclension(struct declensionSecond second) {
+    if (isNounSecondDeclension(second)) {
+        char *noun = second.noun;
+        int length = strlen(noun);
+
+        char *copy = (char *)malloc((length + 1) * sizeof(char));
+        strcpy(copy, noun);
+
+        if (second.retension == 0 || strcmp(noun, "vir") == 0)
+            return copy;
+        copy[length - 2] = '\0';
+        return copy;
+    } else {
+        char *error = (char *)malloc((strlen(second.noun) + 50) * sizeof(char));
+        sprintf(error, "%s is not of second declension.", second.noun);
+        return error;
+    }
+}
+
 char *declineNounFirstDeclension(struct declensionFirst first) {
     char *stem = getStemOfNounFirstDeclension(first);
     char *declinedNoun;
