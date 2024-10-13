@@ -29,22 +29,29 @@ void secondDeclension() {
     // get the second declension noun's stem 
     printf("%s\n", getStemOfNounSecondDeclension(second));
 
+    // decline the noun of fourth declension
     printf("%s\n", declineNounSecondDeclension(second));
 }
 
 void fourthDeclension() {
     // setting up noun of fourth declension
-    struct declensionFourth fourth = {"casus", NEUTRUM, SINGULAR, ACCUSATIVE}; 
+    struct declensionFourth fourth = {"casus", FEMININUM, PLURAL, ABLATIVE}; 
 
     // check if the noun is of fourth declension
     if (isNounFourthDeclension(fourth))
         printf("True!\n");
     else printf("False!\n");
+
+    // get the fourth declension noun's stem
+    printf("%s\n", getStemOfNounFourthDeclension(fourth));
+
+    // decline the noun of fourth declension
+    printf("%s\n", declineNounFourthDeclension(fourth));
 }
 
 int main() {
-    // firstDeclension();
-    // secondDeclension();
+    firstDeclension();
+    secondDeclension();
     fourthDeclension();
     return 0;
 }
