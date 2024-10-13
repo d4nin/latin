@@ -138,6 +138,27 @@ char *getStemOfNounSecondDeclension(struct declensionSecond second) {
     }
 }
 
+char *getStemOfNounFourthDeclension(struct declensionFourth fourth) {
+    if (isNounFourthDeclension(fourth)) {
+        char *noun = fourth.noun;
+        int length = strlen(noun);
+
+        char *copy = (char *)malloc((length + 1) * sizeof(char));
+        strcpy(copy, noun);
+
+        if (fourth.gender == NEUTRUM) 
+            return copy;
+        if (fourth.gender == MASCULINUM || fourth.gender == FEMININUM) {
+            copy[length - 2] = '\0';
+            return copy;
+        }
+    } else {
+        char *error = (char *)malloc((strlen(fourth.noun) + 50) * sizeof(char));
+        sprintf(error, "%s is not of fourth declension.", fourth.noun);
+        return error;
+    }
+}
+
 char *declineNounFirstDeclension(struct declensionFirst first) {
     char *stem = getStemOfNounFirstDeclension(first);
     char *declinedNoun;
