@@ -32,8 +32,19 @@ void secondDeclension() {
     printf("%s\n", declineNounSecondDeclension(second));
 }
 
+void fourthDeclension() {
+    // setting up noun of fourth declension
+    struct declensionFourth fourth = {"casus", NEUTRUM, SINGULAR, ACCUSATIVE}; 
+
+    // check if the noun is of fourth declension
+    if (isNounFourthDeclension(fourth))
+        printf("True!\n");
+    else printf("False!\n");
+}
+
 int main() {
-    firstDeclension();
-    secondDeclension();
+    // firstDeclension();
+    // secondDeclension();
+    fourthDeclension();
     return 0;
 }
