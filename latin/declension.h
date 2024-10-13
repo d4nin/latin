@@ -35,6 +35,13 @@ struct declensionSecond {
     int retension;
 };
 
+struct declensionFourth {
+    char *noun;
+    enum Gender gender;
+    enum Number number;
+    enum Case casus;
+};
+
 bool isNounFirstDeclension(struct declensionFirst first) {
     char *noun = first.noun;
     int length = strlen(noun);
@@ -69,6 +76,29 @@ bool isNounSecondDeclension(struct declensionSecond second) {
         return true;
     if (strcmp(lastTwo, "um") == 0 && second.gender == NEUTRUM)
         return true;
+    return false;
+}
+
+bool isNounFourthDeclension(struct declensionFourth fourth) {
+    char *noun = fourth.noun;
+    int length = strlen(noun);
+
+    char lastTwo[3];
+    char lastOne[2];
+
+    lastTwo[2] = '\0';
+    lastOne[1] = '\0';
+
+    for (int i = 0; i < 2; i++) 
+        lastTwo[i] = noun[length - 2 + i];
+    for (int i = 0; i < 1; i++) 
+        lastOne[i] = noun[length - 1 + i];
+    
+    if (strcmp(lastOne, "u") == 0 && fourth.gender == NEUTRUM)
+        return true;
+    if (strcmp(lastTwo, "us") == 0 && (fourth.gender == FEMININUM || fourth.gender == MASCULINUM))
+        return true;
+    
     return false;
 }
 
