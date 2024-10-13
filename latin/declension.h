@@ -146,8 +146,10 @@ char *getStemOfNounFourthDeclension(struct declensionFourth fourth) {
         char *copy = (char *)malloc((length + 1) * sizeof(char));
         strcpy(copy, noun);
 
-        if (fourth.gender == NEUTRUM) 
+        if (fourth.gender == NEUTRUM)  {
+            copy[length - 1] = '\0';
             return copy;
+        }
         if (fourth.gender == MASCULINUM || fourth.gender == FEMININUM) {
             copy[length - 2] = '\0';
             return copy;
@@ -347,5 +349,77 @@ char *declineNounSecondDeclension(struct declensionSecond second) {
         char *error = (char *)malloc((strlen(second.noun) + 50) * sizeof(char));
         sprintf(error, "%s is not of second declension.", second.noun);
         return error;
+    }
+}
+
+char *declineNounFourthDeclension(struct declensionFourth fourth) {
+    char *stem = getStemOfNounFourthDeclension(fourth);
+    char *declinedNoun;
+
+    if (isNounFourthDeclension(fourth)) {
+        if (fourth.gender == NEUTRUM && fourth.number == SINGULAR) {
+            switch (fourth.casus) {
+                case NOMINATIVE:
+                case DATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "u");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "us");
+                    return declinedNoun;
+            }
+        }
+        if (fourth.gender == NEUTRUM && fourth.number == PLURAL) {
+            switch (fourth.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "ua");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "ibus");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "uum");
+                    return declinedNoun;
+            }
+        }
+        if ((fourth.gender == FEMININUM || fourth.gender == MASCULINUM) && fourth.number == SINGULAR) {
+            switch (fourth.casus) {
+                case NOMINATIVE:
+                case GENITIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "us");
+                    return declinedNoun;
+                case DATIVE:
+                    declinedNoun = strcat(stem, "ui");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "um");
+                    return declinedNoun;
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "u");
+                    return declinedNoun;
+            }
+        }
+        if ((fourth.gender == FEMININUM || fourth.gender == MASCULINUM) && fourth.number == PLURAL) {
+            switch (fourth.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "us");
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "ibus");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "uum");
+                    return declinedNoun;
+            }
+        }
     }
 }
