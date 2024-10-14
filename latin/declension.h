@@ -95,7 +95,21 @@ bool isNounFourthDeclension(struct declension fourth) {
     return false;
 }
 
+bool isNounFifthDeclension(struct declension fifth) {
+    char *noun = fifth.noun;
+    int length = strlen(noun);
 
+    char lastTwo[3];
+    lastTwo[2] = '\0';
+
+    for (int i = 0; i < 2; i++) 
+        lastTwo[i] = noun[length - 2 + i];
+    if (strcmp(noun, "dies") == 0 && fifth.gender == FEMININUM)
+        return false;
+    if (strcmp(lastTwo, "es") == 0 && fifth.gender == FEMININUM)
+        return true;
+    return false;
+}
 
 char *getStemOfNounFirstDeclension(struct declension first) {
     if (isNounFirstDeclension(first)) {
