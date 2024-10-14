@@ -449,3 +449,45 @@ char *declineNounFourthDeclension(struct declension fourth) {
         }
     }
 }
+
+char *declineNounFifthDeclension(struct declension fifth) {
+    char *stem = getStemOfNounFifthDeclension(fifth);
+    char *declinedNoun;
+
+    if (isNounFifthDeclension(fifth)) {
+        if (fifth.number == SINGULAR) {
+            switch (fifth.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "es");
+                    return declinedNoun;
+                case GENITIVE:
+                case DATIVE:
+                    declinedNoun = strcat(stem, "ei");
+                    return declinedNoun;
+                case ACCUSATIVE:
+                    declinedNoun = strcat(stem, "em");
+                    return declinedNoun;
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "e");
+                    return declinedNoun;
+            }
+        }
+        if (fifth.number == PLURAL) {
+            switch (fifth.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    declinedNoun = strcat(stem, "es");;
+                    return declinedNoun;
+                case DATIVE:
+                case ABLATIVE:
+                    declinedNoun = strcat(stem, "ebus");
+                    return declinedNoun;
+                case GENITIVE:
+                    declinedNoun = strcat(stem, "erum");
+                    return declinedNoun;
+            }
+        }
+    }
+}
