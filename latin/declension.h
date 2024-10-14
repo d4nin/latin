@@ -20,7 +20,7 @@ enum Case {
     ABLATIVE
 };
 
-struct declensionFirst {
+struct declension {
     char *noun;
     enum Gender gender;
     enum Number number;
@@ -35,14 +35,7 @@ struct declensionSecond {
     int retension;
 };
 
-struct declensionFourth {
-    char *noun;
-    enum Gender gender;
-    enum Number number;
-    enum Case casus;
-};
-
-bool isNounFirstDeclension(struct declensionFirst first) {
+bool isNounFirstDeclension(struct declension first) {
     char *noun = first.noun;
     int length = strlen(noun);
 
@@ -79,7 +72,7 @@ bool isNounSecondDeclension(struct declensionSecond second) {
     return false;
 }
 
-bool isNounFourthDeclension(struct declensionFourth fourth) {
+bool isNounFourthDeclension(struct declension fourth) {
     char *noun = fourth.noun;
     int length = strlen(noun);
 
@@ -102,7 +95,9 @@ bool isNounFourthDeclension(struct declensionFourth fourth) {
     return false;
 }
 
-char *getStemOfNounFirstDeclension(struct declensionFirst first) {
+
+
+char *getStemOfNounFirstDeclension(struct declension first) {
     if (isNounFirstDeclension(first)) {
         char *noun = first.noun;
         int length = strlen(noun);
@@ -138,7 +133,7 @@ char *getStemOfNounSecondDeclension(struct declensionSecond second) {
     }
 }
 
-char *getStemOfNounFourthDeclension(struct declensionFourth fourth) {
+char *getStemOfNounFourthDeclension(struct declension fourth) {
     if (isNounFourthDeclension(fourth)) {
         char *noun = fourth.noun;
         int length = strlen(noun);
@@ -161,7 +156,7 @@ char *getStemOfNounFourthDeclension(struct declensionFourth fourth) {
     }
 }
 
-char *declineNounFirstDeclension(struct declensionFirst first) {
+char *declineNounFirstDeclension(struct declension first) {
     char *stem = getStemOfNounFirstDeclension(first);
     char *declinedNoun;
 
@@ -352,7 +347,7 @@ char *declineNounSecondDeclension(struct declensionSecond second) {
     }
 }
 
-char *declineNounFourthDeclension(struct declensionFourth fourth) {
+char *declineNounFourthDeclension(struct declension fourth) {
     char *stem = getStemOfNounFourthDeclension(fourth);
     char *declinedNoun;
 
