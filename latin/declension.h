@@ -170,6 +170,23 @@ char *getStemOfNounFourthDeclension(struct declension fourth) {
     }
 }
 
+char *getStemOfNounFifthDeclension(struct declension fifth) {
+    if (isNounFifthDeclension(fifth)) {
+        char *noun = fifth.noun;
+        int length = strlen(noun);
+
+        char *copy = (char *)malloc((length + 1) * sizeof(char));
+        strcpy(copy, noun);
+
+        copy[length - 2] = '\0';
+        return copy;
+    } else {
+        char *error = (char *)malloc((strlen(fifth.noun) + 50) * sizeof(char));
+        sprintf(error, "%s is not of fifth declension.", fifth.noun);
+        return error;
+    }
+}
+
 char *declineNounFirstDeclension(struct declension first) {
     char *stem = getStemOfNounFirstDeclension(first);
     char *declinedNoun;
