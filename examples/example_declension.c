@@ -48,12 +48,15 @@ void fourthDeclension() {
 }
 
 void fifthDeclension() {
-    struct declension fifth = {"res", FEMININUM, SINGULAR, NOMINATIVE};
+    struct declension fifth = {"res", MASCULINUM, SINGULAR, NOMINATIVE};
 
     // check if noun is of fifth declension
     if (isNounFifthDeclension(fifth))
         printf("Correct!\n");
     else printf("Incorrect!\n");
+
+    // get the fifth declension noun's stem
+    printf("%s\n", getStemOfNounFifthDeclension(fifth));
 }
 
 int main() {
