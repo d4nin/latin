@@ -41,6 +41,7 @@ struct declensionThird {
     enum Number number;
     enum Case casus;
     char *genitiveEnding;
+    int retension;
 };
 
 bool isNounFirstDeclension(struct declension first) {
@@ -78,6 +79,10 @@ bool isNounSecondDeclension(struct declensionSecond second) {
     if (strcmp(lastTwo, "um") == 0 && second.gender == NEUTRUM)
         return true;
     return false;
+}
+
+bool isNounThirdDeclension(struct declensionSecond third) {
+    // what the fuck?
 }
 
 bool isNounFourthDeclension(struct declension fourth) {
@@ -152,6 +157,24 @@ char *getStemOfNounSecondDeclension(struct declensionSecond second) {
         char *error = (char *)malloc((strlen(second.noun) + 50) * sizeof(char));
         sprintf(error, "%s is not of second declension.", second.noun);
         return error;
+    }
+}
+
+char *getStemOfNounThirdDeclension(struct declensionThird third) {
+    char *noun = third.noun;
+    int length = strlen(noun);
+
+    char *copy = (char *)malloc((length + 1) * sizeof(char));
+    strcpy(copy, noun);
+
+    if (third.retension == 0) {
+        copy[length - 1] = '\0';
+        return copy;
+    }
+    
+    if (third.retension == 1) {
+        copy[length - 2] = '\0';
+        return copy;
     }
 }
 
