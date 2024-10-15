@@ -34,10 +34,12 @@ void secondDeclension() {
 
 void thirdDeclension() {
     // setting up noun of third declension
-    struct declensionThird third = {"nox", FEMININUM, SINGULAR, NOMINATIVE, "ctis", 0};
+    struct declensionThird third = {"tempus", NEUTRUM, PLURAL, ABLATIVE, "oris", 1};
 
     // get the third declension noun's stem
     printf("%s\n", getStemOfNounThirdDeclension(third));
+
+    printf("%s\n", declineNounThirdDeclension(third));
 }
 
 void fourthDeclension() {
