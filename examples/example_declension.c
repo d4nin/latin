@@ -32,6 +32,14 @@ void secondDeclension() {
     printf("%s\n", declineNounSecondDeclension(second));
 }
 
+void thirdDeclension() {
+    // setting up noun of third declension
+    struct declensionThird third = {"nox", FEMININUM, SINGULAR, NOMINATIVE, "ctis", 0};
+
+    // get the third declension noun's stem
+    printf("%s\n", getStemOfNounThirdDeclension(third));
+}
+
 void fourthDeclension() {
     struct declension fourth = {"casus", FEMININUM, PLURAL, ABLATIVE}; 
 
@@ -63,9 +71,10 @@ void fifthDeclension() {
 }
 
 int main() {
-    firstDeclension();
-    secondDeclension();
-    fourthDeclension();
-    fifthDeclension();
+    // firstDeclension();
+    // secondDeclension();
+    thirdDeclension();
+    // fourthDeclension();
+    // fifthDeclension();
     return 0;
 }
