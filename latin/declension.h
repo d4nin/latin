@@ -409,6 +409,91 @@ char *declineNounSecondDeclension(struct declensionSecond second) {
     }
 }
 
+char *declineNounThirdDeclension(struct declensionThird third) {
+    char *stem = getStemOfNounThirdDeclension(third);
+    char *declinedNoun;
+
+    char *stemGenitiveCaseCat = strcat(stem, third.genitiveEnding);
+    int length = strlen(stemGenitiveCaseCat);
+
+    char *stemGenitiveCase = (char *)malloc((length + 1) * sizeof(char));
+    strcpy(stemGenitiveCase, stemGenitiveCaseCat);
+    stemGenitiveCase[length - 2] = '\0';
+
+    if (third.number == SINGULAR
+        && (third.gender == MASCULINUM || third.gender == FEMININUM)) {
+        switch (third.casus) {
+            case NOMINATIVE:
+            case VOCATIVE:
+                declinedNoun = third.noun;
+                return declinedNoun;
+            case GENITIVE:
+                declinedNoun = stemGenitiveCaseCat;
+                return declinedNoun;
+            case DATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "i");
+                return declinedNoun;
+            case ACCUSATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "em");
+                return declinedNoun;
+            case ABLATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "e");
+                return declinedNoun;
+        }
+    }
+    if (third.number == PLURAL
+        && (third.gender == FEMININUM || third.gender == MASCULINUM)) {
+        switch (third.casus) {
+            case NOMINATIVE:
+            case ACCUSATIVE:
+            case VOCATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "es");
+                return declinedNoun;
+            case DATIVE:
+            case ABLATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "ibus");
+                return declinedNoun;
+            case GENITIVE:
+                declinedNoun = strcat(stemGenitiveCase, "um");
+                return declinedNoun;
+        }
+    }
+    if (third.number == SINGULAR && third.gender == NEUTRUM) {
+        switch(third.casus) {
+            case NOMINATIVE:
+            case ACCUSATIVE:
+            case VOCATIVE:
+                declinedNoun = third.noun;
+                return declinedNoun;
+            case GENITIVE:
+                declinedNoun = stemGenitiveCaseCat;
+                return declinedNoun;
+            case DATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "i");
+                return declinedNoun;
+            case ABLATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "e");
+                return declinedNoun;
+        }
+    }
+    if (third.number == PLURAL && third.gender == NEUTRUM) {
+        switch (third.casus) {
+            case NOMINATIVE:
+            case ACCUSATIVE:
+            case VOCATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "a");
+                return declinedNoun;
+            case DATIVE:
+            case ABLATIVE:
+                declinedNoun = strcat(stemGenitiveCase, "ibus");
+                return declinedNoun;
+            case GENITIVE:
+                declinedNoun = strcat(stemGenitiveCase, "um");
+                return declinedNoun;
+        }
+    }
+}
+
 char *declineNounFourthDeclension(struct declension fourth) {
     char *stem = getStemOfNounFourthDeclension(fourth);
     char *declinedNoun;
