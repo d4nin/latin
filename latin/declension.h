@@ -35,6 +35,14 @@ struct declensionSecond {
     int retension;
 };
 
+struct declensionThird {
+    char *noun;
+    enum Gender gender;
+    enum Number number;
+    enum Case casus;
+    char *genitiveEnding;
+};
+
 bool isNounFirstDeclension(struct declension first) {
     char *noun = first.noun;
     int length = strlen(noun);
