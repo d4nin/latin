@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "declension.h": "c"
+        "declension.h": "c",
+        "conjugation.h": "c",
+        "pronouns.h": "c",
+        "imperative.h": "c",
+        "includes.h": "c"
     }
 }
