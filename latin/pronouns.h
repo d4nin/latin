@@ -36,7 +36,7 @@ struct pronouns {
 char *getPersonalPronoun(struct pronouns pronoun) {
     char *personalPronoun;
     if (pronoun.casus == VOCATIVE)
-        return "personal pronouns don't have a vocative form!";
+        return "";
     if (pronoun.person == FIRST_PERSON && pronoun.number == SINGULAR) {
         switch (pronoun.casus) {
             case ACCUSATIVE:
