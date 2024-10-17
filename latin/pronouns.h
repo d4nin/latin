@@ -127,3 +127,21 @@ char *getPersonalPronoun(struct pronouns pronoun) {
         }
     }
 }
+
+char *getReflexivePronoun(struct pronouns pronoun) {
+    char *reflexivePronoun;
+    if (pronoun.casus == NOMINATIVE || pronoun.casus == VOCATIVE)
+        return "";
+    switch (pronoun.casus) {
+        case ACCUSATIVE:
+        case ABLATIVE:
+            reflexivePronoun = "se";
+            return reflexivePronoun;
+        case GENITIVE:
+            reflexivePronoun = "sui";
+            return reflexivePronoun;
+        case DATIVE:
+            reflexivePronoun = "sibi";
+            return reflexivePronoun;
+    }
+}
