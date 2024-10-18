@@ -157,94 +157,189 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
         return "";
     if (strcmp(pronouns.demonstrativePronoun, "is, ea, id") == 0 &&
         pronouns.pronoun.number == SINGULAR) {
-        switch (pronouns.pronoun.casus) {
-            case NOMINATIVE:
-                if (pronouns.pronoun.gender == MASCULINUM) {
-                    demonstrativePronoun = "is";
+            switch (pronouns.pronoun.casus) {
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "is";
+                        return demonstrativePronoun;
+                    } 
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ea";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "id";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    demonstrativePronoun = "eius";
                     return demonstrativePronoun;
-                } 
-                if (pronouns.pronoun.gender == FEMININUM) {
-                    demonstrativePronoun = "ea";
+                case DATIVE:
+                    demonstrativePronoun = "ei";
                     return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == NEUTRUM) {
-                    demonstrativePronoun = "id";
-                    return demonstrativePronoun;
-                }
-            case GENITIVE:
-                demonstrativePronoun = "eius";
-                return demonstrativePronoun;
-            case DATIVE:
-                demonstrativePronoun = "ei";
-                return demonstrativePronoun;
-            case ACCUSATIVE:
-                if (pronouns.pronoun.gender == MASCULINUM) {
-                    demonstrativePronoun = "eum";
-                    return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == FEMININUM) {
-                    demonstrativePronoun = "eam";
-                    return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == NEUTRUM) {
-                    demonstrativePronoun = "id";
-                    return demonstrativePronoun;
-                }
-            case ABLATIVE:
-                if (pronouns.pronoun.gender == MASCULINUM || 
-                    pronouns.pronoun.gender == NEUTRUM) {
-                    demonstrativePronoun = "eo";
-                    return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == FEMININUM) {
-                    demonstrativePronoun = "ea";
-                    return demonstrativePronoun;
-                }
-        }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "eum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eam";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "id";
+                        return demonstrativePronoun;
+                    }
+                case ABLATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM || 
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "eo";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ea";
+                        return demonstrativePronoun;
+                    }
+            }
     }
     if (strcmp(pronouns.demonstrativePronoun, "is, ea, id") == 0 &&
         pronouns.pronoun.number == PLURAL) {
-        switch (pronouns.pronoun.casus) {
-            case DATIVE:
-            case ABLATIVE:
-                demonstrativePronoun = "eis";
-                return demonstrativePronoun;
-            case NOMINATIVE:
-                if (pronouns.pronoun.gender == MASCULINUM) {
-                    demonstrativePronoun = "ii";
+            switch (pronouns.pronoun.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    demonstrativePronoun = "eis";
                     return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == FEMININUM) {
-                    demonstrativePronoun = "eae";
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "ii";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eae";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ea";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "eorum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "earum";
+                        return demonstrativePronoun;
+                    }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "eos";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eas";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ea";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
+    if (strcmp(pronouns.demonstrativePronoun, "hic, haec, hoc") == 0 &&
+        pronouns.pronoun.number == SINGULAR) {
+            switch (pronouns.pronoun.casus) {
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "hic";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "haec";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "hoc";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    demonstrativePronoun = "huius";
                     return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == NEUTRUM) {
-                    demonstrativePronoun = "ea";
+                case DATIVE:
+                    demonstrativePronoun = "huic";
                     return demonstrativePronoun;
-                }
-            case GENITIVE:
-                if (pronouns.pronoun.gender == MASCULINUM ||
-                    pronouns.pronoun.gender == NEUTRUM) {
-                    demonstrativePronoun = "eorum";
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "hunc";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "hanc";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "hoc";
+                        return demonstrativePronoun;
+                    }
+                case ABLATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ) {
+                        demonstrativePronoun = "hec";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "hac";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "hoc";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
+    if (strcmp(pronouns.demonstrativePronoun, "hic, haec, hoc") == 0 &&
+        pronouns.pronoun.number == PLURAL) {
+            switch (pronouns.pronoun.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    demonstrativePronoun = "his";
                     return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == FEMININUM) {
-                    demonstrativePronoun = "earum";
-                    return demonstrativePronoun;
-                }
-            case ACCUSATIVE:
-                if (pronouns.pronoun.gender == MASCULINUM) {
-                    demonstrativePronoun = "eos";
-                    return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == FEMININUM) {
-                    demonstrativePronoun = "eas";
-                    return demonstrativePronoun;
-                }
-                if (pronouns.pronoun.gender == NEUTRUM) {
-                    demonstrativePronoun = "ea";
-                    return demonstrativePronoun;
-                }
-        }
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "hii";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "heae";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "haec";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "horum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "harum";
+                        return demonstrativePronoun;
+                    }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "hos";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "has";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "haec";
+                        return demonstrativePronoun;
+                    }
+            }
     }
 }
