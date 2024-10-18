@@ -1,7 +1,7 @@
 #include "../latin/declension.h"
 
 void firstDeclension() {
-    struct declension first = {"terra", NEUTRUM, PLURAL, ABLATIVE};
+    struct declension first = {"terra", MASCULINUM, PLURAL, ACCUSATIVE};
 
     // check if the noun is of first declension
     if (isNounFirstDeclension(first))
@@ -43,7 +43,7 @@ void thirdDeclension() {
 }
 
 void fourthDeclension() {
-    struct declension fourth = {"casus", FEMININUM, PLURAL, ABLATIVE}; 
+    struct declension fourth = {"gelu", NEUTRUM, SINGULAR, GENITIVE}; 
 
     // check if the noun is of fourth declension
     if (isNounFourthDeclension(fourth))
@@ -58,7 +58,7 @@ void fourthDeclension() {
 }
 
 void fifthDeclension() {
-    struct declension fifth = {"res", FEMININUM, PLURAL, ABLATIVE};
+    struct declension fifth = {"spes", FEMININUM, SINGULAR, ACCUSATIVE};
 
     // check if noun is of fifth declension
     if (isNounFifthDeclension(fifth))
@@ -73,10 +73,10 @@ void fifthDeclension() {
 }
 
 int main() {
-    // firstDeclension();
-    // secondDeclension();
+    firstDeclension();
+    secondDeclension();
     thirdDeclension();
-    // fourthDeclension();
-    // fifthDeclension();
+    fourthDeclension();
+    fifthDeclension();
     return 0;
 }
