@@ -247,6 +247,98 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
                     }
             }
     }
+    if (strcmp(pronouns.demonstrativePronoun, "ille, illa, illud") == 0 &&
+        pronouns.pronoun.number == SINGULAR) {
+            switch (pronouns.pronoun.casus) {
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "ille";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "illa";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "illud";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    demonstrativePronoun = "illius";
+                    return demonstrativePronoun;
+                case DATIVE:
+                    demonstrativePronoun = "illi";
+                    return demonstrativePronoun;
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "illum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "illam";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "illud";
+                        return demonstrativePronoun;
+                    }
+                case ABLATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "illo";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "illa";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
+    if (strcmp(pronouns.demonstrativePronoun, "ille, illa, illud") == 0 &&
+        pronouns.pronoun.number == PLURAL) {
+            switch (pronouns.pronoun.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    demonstrativePronoun = "illis";
+                    return demonstrativePronoun;
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "illi";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "illae";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "illa";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "illorum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "illarum";
+                        return demonstrativePronoun;
+                    }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "illos";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "illas";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "illa";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
     if (strcmp(pronouns.demonstrativePronoun, "hic, haec, hoc") == 0 &&
         pronouns.pronoun.number == SINGULAR) {
             switch (pronouns.pronoun.casus) {
