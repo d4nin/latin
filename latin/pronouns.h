@@ -434,4 +434,93 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
                     }
             }
     }
+    if (strcmp(pronouns.demonstrativePronoun, "ipse, ipsa, ipsum") == 0 &&
+        pronouns.pronoun.number == SINGULAR) {
+            switch (pronouns.pronoun.casus) {
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "ipse";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ipsa";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ipsum";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    demonstrativePronoun = "ipsius";
+                    return demonstrativePronoun;
+                case DATIVE:
+                    demonstrativePronoun = "ipsi";
+                    return demonstrativePronoun;
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM || 
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ipsum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ipsam";
+                        return demonstrativePronoun;
+                    }
+                case ABLATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ipso";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ipsa";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
+    if (strcmp(pronouns.demonstrativePronoun, "ipse, ipsa, ipsum") == 0 &&
+        pronouns.pronoun.number == PLURAL) {
+            switch (pronouns.pronoun.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    demonstrativePronoun = "ipsis";
+                    return demonstrativePronoun;
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "ipsi";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ipsae";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ipsa";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ipsorum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ipsarum";
+                        return demonstrativePronoun;
+                    }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "ipsos";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ipsas";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ipsa";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
 }
