@@ -615,4 +615,93 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
                     }
             }
     }
+    if (strcmp(pronouns.demonstrativePronoun, "idem, eadem, idem") == 0 &&
+        pronouns.pronoun.number == SINGULAR) {
+            switch (pronouns.pronoun.casus) {
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "idem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eadem";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    demonstrativePronoun = "eiusdem";
+                    return demonstrativePronoun;
+                case DATIVE:
+                    demonstrativePronoun = "eidem";
+                    return demonstrativePronoun;
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "eundem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eandem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "idem";
+                        return demonstrativePronoun;
+                    }
+                case ABLATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "eodem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eadem";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
+    if (strcmp(pronouns.demonstrativePronoun, "idem, eadem, idem") == 0 &&
+        pronouns.pronoun.number == PLURAL) {
+            switch (pronouns.pronoun.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    demonstrativePronoun = "eisdem";
+                    return demonstrativePronoun;
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "iidem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "eaedem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "eadem";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "eorundem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "earundem";
+                        return demonstrativePronoun;
+                    }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "eosdem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "easdem";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "eadem";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
 }
