@@ -376,7 +376,7 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
                     }
                 case ABLATIVE:
                     if (pronouns.pronoun.gender == MASCULINUM ) {
-                        demonstrativePronoun = "hec";
+                        demonstrativePronoun = "hoc";
                         return demonstrativePronoun;
                     }
                     if (pronouns.pronoun.gender == FEMININUM) {
