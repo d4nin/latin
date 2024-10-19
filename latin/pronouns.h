@@ -523,4 +523,96 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
                     }
             }
     }
+    if (strcmp(pronouns.demonstrativePronoun, "iste, ista, istud") == 0 &&
+        pronouns.pronoun.number == SINGULAR) {
+            switch (pronouns.pronoun.casus) {
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "iste";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ista";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "istud";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    demonstrativePronoun = "istius";
+                    return demonstrativePronoun;
+                case DATIVE:
+                    demonstrativePronoun = "isti";
+                    return demonstrativePronoun;
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "istum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "istam";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "istud";
+                        return demonstrativePronoun;
+                    }
+                case ABLATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "isto";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "ista";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
+    if (strcmp(pronouns.demonstrativePronoun, "iste, ista, istud") == 0 &&
+        pronouns.pronoun.number == PLURAL) {
+            switch (pronouns.pronoun.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    demonstrativePronoun = "istis";
+                    return demonstrativePronoun;
+                case NOMINATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "isti";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "istae";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ista";
+                        return demonstrativePronoun;
+                    }
+                case GENITIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM ||
+                        pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "istorum";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "istarum";
+                        return demonstrativePronoun;
+                    }
+                case ACCUSATIVE:
+                    if (pronouns.pronoun.gender == MASCULINUM) {
+                        demonstrativePronoun = "istos";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == FEMININUM) {
+                        demonstrativePronoun = "istas";
+                        return demonstrativePronoun;
+                    }
+                    if (pronouns.pronoun.gender == NEUTRUM) {
+                        demonstrativePronoun = "ista";
+                        return demonstrativePronoun;
+                    }
+            }
+    }
 }
