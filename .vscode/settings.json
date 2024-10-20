@@ -4,6 +4,7 @@
         "conjugation.h": "c",
         "pronouns.h": "c",
         "imperative.h": "c",
-        "includes.h": "c"
+        "includes.h": "c",
+        "imperfect.h": "c"
     }
 }
