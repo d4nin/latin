@@ -1,3 +1,6 @@
+#ifndef PRONOUNS_H
+#define PRONOUNS_H
+
 #include "includes.h"
 
 enum Person {
@@ -705,3 +708,5 @@ char *getDemonstrativePronoun(struct demonstrativePronouns pronouns) {
             }
     }
 }
+
+#endif

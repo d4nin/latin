@@ -1,3 +1,6 @@
+#ifndef IMPERATIVE_H
+#define IMPERATIVE_H
+
 #include "conjugation.h"
 
 char *imperativeFirst(struct Conjugation conjugation) {
@@ -30,3 +33,5 @@ char *imperativeFirst(struct Conjugation conjugation) {
         }
     } else return "verb is not in 2nd person.";
 }
+
+#endif

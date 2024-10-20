@@ -1,3 +1,6 @@
+#ifndef DECLENSION_H
+#define DECLENSION_H
+
 #include "includes.h"
 
 enum Gender {
@@ -607,3 +610,5 @@ char *declineNounFifthDeclension(struct declension fifth) {
         }
     }
 }
+
+#endif
