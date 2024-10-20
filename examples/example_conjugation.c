@@ -1,4 +1,5 @@
 #include "../latin/conjugation.h"
+#include "../latin/imperfect.h"
 
 /*
     CODE EXAMPLES FOR WORKING WITH CONJUGATION
@@ -6,10 +7,10 @@
 
 int main() {
     // setting up the verb
-    struct Conjugation conjugation = {"legere", THIRD, THIRD_PERSON, SINGULAR};
+    struct Conjugation conjugation = {"punire", FOURTH, THIRD_PERSON, PLURAL};
     
     // get the verb's base
-    char *base = getBaseOfVerb(conjugation);
+    char *base = getStemOfVerb(conjugation);
     
     // conjugate the verb in the present form
     char *conjugated = conjugateVerb(conjugation);
@@ -36,16 +37,8 @@ int main() {
         printf("True!\n");
     else printf("False.\n");
 
-    // print out the entirety of the 1st type of conjugation in the present form
-    conjugateFirst(conjugation);
-
-    // print out the entirety of the 2nd type of conjugation in the present form
-    conjugateSecond(conjugation);
-
-    // print out the entirety of the 3rd type of conjugation in the present form
-    conjugateThird(conjugation);
-
-    // print out hte entirety of the 4th type of conjugation in the present form
-    conjugateFourth(conjugation);
+    // conjugate the verb in the imperfect tense
+    char *imperfect = conjugateVerbPerfect(conjugation);
+    printf("%s\n", imperfect);
     return 0;
 }
