@@ -1,3 +1,6 @@
+#ifndef CONJUGATION_H
+#define CONJUGATION_H
+
 #include "includes.h"
 
 enum conjugationType {
@@ -51,7 +54,6 @@ char *getStemOfVerb(struct Conjugation conjugation) {
 
 char *conjugateVerb(struct Conjugation conjugation) {
     char *base = getStemOfVerb(conjugation);
-
     switch (conjugation.type) {
         case FIRST:
             if (conjugation.Person == FIRST_PERSON && conjugation.Number == SINGULAR) {
@@ -182,7 +184,7 @@ bool isSecondConjugation(struct Conjugation conjugation) {
     conjugation.Person = SECOND_PERSON;
     conjugation.Number = SINGULAR;
 
-    char *conjugated = conjugate(conjugation);
+    char *conjugated = conjugateVerb(conjugation);
     int length = strlen(conjugated);
     
     char lastTwo[3];
@@ -203,7 +205,7 @@ bool isThirdConjugation(struct Conjugation conjugation) {
     conjugation.Person = THIRD_PERSON;
     conjugation.Number = PLURAL;
 
-    char *conjugated = conjugate(conjugation);
+    char *conjugated = conjugateVerb(conjugation);
     int length = strlen(conjugated);
 
     char lastFour[5];
@@ -242,3 +244,5 @@ bool isFourthConjugation(struct Conjugation conjugation) {
         return true;
     else return false;
 }
+
+#endif
