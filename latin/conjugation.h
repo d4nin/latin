@@ -25,7 +25,7 @@ struct Conjugation {
     enum number Number;
 };
 
-char *getBaseOfVerb(struct Conjugation conjugation) {
+char *getStemOfVerb(struct Conjugation conjugation) {
     const char *verb = conjugation.verb;
     int length = strlen(verb);
 
@@ -50,7 +50,7 @@ char *getBaseOfVerb(struct Conjugation conjugation) {
 }
 
 char *conjugateVerb(struct Conjugation conjugation) {
-    char *base = getBaseOfVerb(conjugation);
+    char *base = getStemOfVerb(conjugation);
 
     switch (conjugation.type) {
         case FIRST:
