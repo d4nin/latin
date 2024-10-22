@@ -4,7 +4,7 @@
 #include "includes.h"
 #include "conjugation.h"
 
-char *conjugateVerbPerfect(struct Conjugation conjugation) {
+char *conjugateVerbImperfect(struct Conjugation conjugation) {
     char *stem = getStemOfVerb(conjugation);
     char *conjugatedVerb;
 
@@ -69,6 +69,43 @@ char *conjugateVerbPerfect(struct Conjugation conjugation) {
         }
     }
     return "";
+}
+
+char *conjugateVerbToBeImperfect(struct verbToBe toBe) {
+    char *stem = "era";
+    char *conjugatedVerb = (char *)malloc((strlen(stem) + 4) * sizeof(char));
+
+    strcpy(conjugatedVerb, stem);
+
+    switch (toBe.Number) {
+        case SINGULAR:
+            if (toBe.Person == FIRST_PERSON) {
+                strcat(conjugatedVerb, "m");
+                break;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                strcat(conjugatedVerb, "s");
+                break;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                strcat(conjugatedVerb, "t");
+                break;
+            }
+        case PLURAL:
+            if (toBe.Person == FIRST_PERSON) {
+                strcat(conjugatedVerb, "mus");
+                break;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                strcat(conjugatedVerb, "tis");
+                break;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                strcat(conjugatedVerb, "nt");
+                break;
+            }
+    }
+    return conjugatedVerb;
 }
 
 #endif
