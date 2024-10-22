@@ -71,4 +71,43 @@ char *conjugateVerbFuture(struct Conjugation conjugation) {
     return "";
 }
 
+char *conjugateVerbToBeFuture(struct verbToBe toBe) {
+    char *stem = "eri";
+    char *conjugatedVerb = (char *)malloc((strlen(stem) + 3) * sizeof(char));
+
+    strcpy(conjugatedVerb, stem);
+    int length = strlen(conjugatedVerb);
+
+    switch (toBe.Number) {
+        case SINGULAR:
+            if (toBe.Person == FIRST_PERSON) {
+                conjugatedVerb[length - 1] = '\0';
+                strcat(conjugatedVerb, "o");
+                break;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                strcat(conjugatedVerb, "s");
+                break;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                strcat(conjugatedVerb, "t");
+                break;
+            }
+        case PLURAL:
+            if (toBe.Person == FIRST_PERSON) {
+                strcat(conjugatedVerb, "mus");
+                break;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                strcat(conjugatedVerb, "tis");
+                break;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                conjugatedVerb[length - 1] = '\0';
+                strcat(conjugatedVerb, "unt");
+            }
+    }
+    return conjugatedVerb;
+}
+
 #endif
