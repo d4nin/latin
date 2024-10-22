@@ -6,7 +6,26 @@
     CODE EXAMPLES FOR WORKING WITH CONJUGATION
 */
 
+void verbToBe() {
+    // setting up the verb "to be"
+    struct verbToBe toBe = {THIRD_PERSON, PLURAL};
+
+    // conjugate the verb "to be" in the present tense
+    char *present = conjugateVerbToBe(toBe);
+    printf("%s\n", present);
+
+    // conjugate the verb "to be" in the imperfect tense
+    char *imperfect = conjugateVerbToBeImperfect(toBe);
+    printf("%s\n", imperfect);
+
+    // conjugate the verb "to be" in the future tense
+    char *future = conjugateVerbToBeFuture(toBe);
+    printf("%s\n", future);
+}
+
 int main() {
+    verbToBe();
+
     // setting up the verb
     struct Conjugation conjugation = {"scribere", THIRD, THIRD_PERSON, PLURAL};
     
@@ -39,7 +58,7 @@ int main() {
     else printf("False.\n");
 
     // conjugate the verb in the imperfect tense
-    char *imperfect = conjugateVerbPerfect(conjugation);
+    char *imperfect = conjugateVerbImperfect(conjugation);
     printf("%s\n", imperfect);
 
     char *future = conjugateVerbFuture(conjugation);
