@@ -28,6 +28,11 @@ struct Conjugation {
     enum number Number;
 };
 
+struct verbToBe {
+    enum person Person;
+    enum number Number;
+};
+
 char *getStemOfVerb(struct Conjugation conjugation) {
     const char *verb = conjugation.verb;
     int length = strlen(verb);
@@ -243,6 +248,38 @@ bool isFourthConjugation(struct Conjugation conjugation) {
     if (strcmp(lastThree, "ire") == 0)
         return true;
     else return false;
+}
+
+char *conjugateVerbToBe(struct verbToBe toBe) {
+    char *conjugatedVerb;
+    switch (toBe.Number) {
+        case SINGULAR:
+            if (toBe.Person == FIRST_PERSON) {
+                conjugatedVerb = "sum";
+                return conjugatedVerb;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                conjugatedVerb = "es";
+                return conjugatedVerb;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                conjugatedVerb = "est";
+                return conjugatedVerb;
+            }
+        case PLURAL:
+            if (toBe.Person == FIRST_PERSON) {
+                conjugatedVerb = "sumus";
+                return conjugatedVerb;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                conjugatedVerb = "estis";
+                return conjugatedVerb;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                conjugatedVerb = "sunt";
+                return conjugatedVerb;
+            }
+    }
 }
 
 #endif
