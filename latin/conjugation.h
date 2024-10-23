@@ -246,6 +246,44 @@ bool isSecondConjugation(struct Conjugation conjugation) {
     else return true;
 }
 
+char *conjugateVerbSecondConjugation(struct Conjugation conjugation) {
+    char *stem = getStemOfVerb(conjugation);
+    char *conjugatedVerb = (char *)malloc((strlen(stem) + 3) * sizeof(char));
+    strcpy(conjugatedVerb, stem);
+
+    if (isSecondConjugation(conjugation)) {
+        switch (conjugation.Number) {
+            case SINGULAR:
+                if (conjugation.Person == FIRST_PERSON) {
+                    strcat(conjugatedVerb, "o");
+                    break;
+                }
+                if (conjugation.Person == SECOND_PERSON) {
+                    strcat(conjugatedVerb, "s");
+                    break;
+                }
+                if (conjugation.Person == THIRD_PERSON) {
+                    strcat(conjugatedVerb, "t");
+                    break;
+                }
+            case PLURAL:
+                if (conjugation.Person == FIRST_PERSON) {
+                    strcat(conjugatedVerb, "mus");
+                    break;
+                }
+                if (conjugation.Person == SECOND_PERSON) {
+                    strcat(conjugatedVerb, "tis");
+                    break;
+                }
+                if (conjugation.Person == THIRD_PERSON) {
+                    strcat(conjugatedVerb, "nt");
+                    break;
+                }
+        }
+        return conjugatedVerb;
+    } else return "";
+}
+
 bool isThirdConjugation(struct Conjugation conjugation) {
     conjugation.Person = THIRD_PERSON;
     conjugation.Number = PLURAL;
