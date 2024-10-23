@@ -312,6 +312,44 @@ bool isThirdConjugation(struct Conjugation conjugation) {
     return true;
 }
 
+char *conjugateVerbThirdConjugation(struct Conjugation conjugation) {
+    char *stem = getStemOfVerb(conjugation);
+    char *conjugatedVerb = (char *)malloc((strlen(stem) + 4) * sizeof(char));
+    strcpy(conjugatedVerb, stem);
+
+    if (isThirdConjugation(conjugation)) {
+        switch (conjugation.Number) {
+            case SINGULAR:
+                if (conjugation.Person == FIRST_PERSON) {
+                    strcat(conjugatedVerb, "o");
+                    break;
+                }
+                if (conjugation.Person == SECOND_PERSON) {
+                    strcat(conjugatedVerb, "is");
+                    break;
+                }
+                if (conjugation.Person == THIRD_PERSON) {
+                    strcat(conjugatedVerb, "it");
+                    break;
+                }
+            case PLURAL:
+                if (conjugation.Person == FIRST_PERSON) {
+                    strcat(conjugatedVerb, "imus");
+                    break;
+                }
+                if (conjugation.Person == SECOND_PERSON) {
+                    strcat(conjugatedVerb, "itis");
+                    break;
+                }
+                if (conjugation.Person == THIRD_PERSON) {
+                    strcat(conjugatedVerb, "unt");
+                    break;
+                }
+        }
+        return conjugatedVerb;
+    } else return "";
+}
+
 bool isFourthConjugation(struct Conjugation conjugation) {
     char *verb = conjugation.verb;
     int length = strlen(verb);
