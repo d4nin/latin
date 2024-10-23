@@ -27,7 +27,7 @@ int main() {
     verbToBe();
 
     // setting up the verb
-    struct Conjugation conjugation = {"habere", SECOND, FIRST_PERSON, PLURAL};
+    struct Conjugation conjugation = {"scribere", THIRD, THIRD_PERSON, PLURAL};
     
     // get the verb's base
     char *base = getStemOfVerb(conjugation);
@@ -61,9 +61,13 @@ int main() {
     char *first = conjugateVerbFirstConjugation(conjugation);
     printf("%s\n", first);
 
-    // conjugate verbs of hte second conjugation
+    // conjugate verbs of the second conjugation
     char *second = conjugateVerbSecondConjugation(conjugation);
     printf("%s\n", second);
+
+    // conjugate verbs of the third conjugation
+    char *third = conjugateVerbThirdConjugation(conjugation);
+    printf("%s\n", third);
 
     // conjugate the verb in the imperfect tense
     char *imperfect = conjugateVerbImperfect(conjugation);
