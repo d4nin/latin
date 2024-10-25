@@ -436,4 +436,35 @@ char *conjugateVerbToBe(struct verbToBe toBe) {
     }
 }
 
+bool isVerbPresentTense(char *verb) {
+    char *verbCopy = (char *)malloc((strlen(verb) + 1) * sizeof(char)); 
+    strcpy(verbCopy, verb);
+    int length = strlen(verbCopy);
+    
+    char lastOne[2];
+    char lastTwo[3];
+    char lastThree[4];
+
+    lastOne[1] = '\0';
+    for (int i = 0; i < 1; i++) 
+        lastOne[i] = verbCopy[length - 1 + i];
+    if (strcmp(lastOne, "o") == 0 || strcmp(lastOne, "s") == 0 
+        || strcmp(lastOne, "t") == 0) 
+        return true;
+
+    lastTwo[2] = '\0';
+    for (int i = 0; i < 2; i++) 
+        lastTwo[i] = verbCopy[length - 2 + i];
+    if (strcmp(lastTwo, "nt") == 0)
+        return true;
+
+    lastThree[3] = '\0';
+    for (int i = 0; i < 3; i++) 
+        lastThree[i] = verbCopy[length - 3 + i];
+    if (strcmp(lastThree, "mus") == 0 || strcmp(lastThree, "tis") == 0)
+        return true;
+    
+    return false;
+}
+
 #endif
