@@ -9,43 +9,13 @@ char *conjugateVerbPassive(struct Conjugation conjugation) {
     char *conjugatedVerb = (char *)malloc((strlen(stem) + 1) * sizeof(char));
     strcpy(conjugatedVerb, stem);
 
-    if (isFirstConjugation(conjugation)) {
+    if (isFirstConjugation(conjugation) || isSecondConjugation(conjugation)) {
         switch (conjugation.Number) {
             case SINGULAR:
                 if (conjugation.Person == FIRST_PERSON) {
                     int length = strlen(conjugatedVerb);
                     conjugatedVerb[length - 1] = '\0';
 
-                    strcat(conjugatedVerb, "or");
-                    break;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    strcat(conjugatedVerb, "ris");
-                    break;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    strcat(conjugatedVerb, "tur");
-                    break;
-                }
-            case PLURAL:
-                if (conjugation.Person == FIRST_PERSON) {
-                    strcat(conjugatedVerb, "mur");
-                    break;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    strcat(conjugatedVerb, "mini");
-                    break;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    strcat(conjugatedVerb, "ntur");
-                    break;
-                }
-        }
-    }
-    if (isSecondConjugation(conjugation)) {
-        switch (conjugation.Number) {
-            case SINGULAR:
-                if (conjugation.Person == FIRST_PERSON) {
                     strcat(conjugatedVerb, "or");
                     break;
                 }
