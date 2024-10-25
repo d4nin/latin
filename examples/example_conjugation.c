@@ -57,6 +57,11 @@ int main() {
         printf("True!\n");
     else printf("False.\n");
 
+    char *verb = "amant";
+    if (isVerbPresentTense(verb)) 
+        printf("Present tense.\n");
+    else printf("Not present tense.\n");
+
     // conjugate verbs of the first conjugation
     char *first = conjugateVerbFirstConjugation(conjugation);
     printf("%s\n", first);
