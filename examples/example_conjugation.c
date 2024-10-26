@@ -13,14 +13,6 @@ void verbToBe() {
     // conjugate the verb "to be" in the present tense
     char *present = conjugateVerbToBe(toBe);
     printf("%s\n", present);
-
-    // conjugate the verb "to be" in the imperfect tense
-    char *imperfect = conjugateVerbToBeImperfect(toBe);
-    printf("%s\n", imperfect);
-
-    // conjugate the verb "to be" in the future tense
-    char *future = conjugateVerbToBeFuture(toBe);
-    printf("%s\n", future);
 }
 
 int main() {
@@ -77,12 +69,5 @@ int main() {
     // conjugate verbs of the fourth conjugation
     char *fourth = conjugateVerbFourthConjugation(conjugation);
     printf("%s\n", fourth);
-
-    // conjugate the verb in the imperfect tense
-    char *imperfect = conjugateVerbImperfect(conjugation);
-    printf("%s\n", imperfect);
-
-    char *future = conjugateVerbFuture(conjugation);
-    printf("%s\n", future);
     return 0;
 }
