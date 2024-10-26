@@ -9,7 +9,7 @@ char *getStemOfVerbImperfect(struct Conjugation conjugation) {
     strcpy(verb, conjugation.verb);
     int length = strlen(verb);
 
-    if (isFirstConjugation(conjugation) || isThirdConjugation(conjugation)) {
+    if (isFirstConjugation(conjugation) || isSecondConjugation(conjugation)) {
         verb[length - 2] = '\0';
         strcat(verb, "b");
         return verb;
@@ -27,70 +27,38 @@ char *getStemOfVerbImperfect(struct Conjugation conjugation) {
 }
 
 char *conjugateVerbImperfect(struct Conjugation conjugation) {
-    char *stem = getStemOfVerb(conjugation);
+    char *stem = getStemOfVerbImperfect(conjugation);
     char *conjugatedVerb;
 
-    if (isFirstConjugation(conjugation) || isSecondConjugation(conjugation)) {
-        switch (conjugation.Number) {
-            case SINGULAR:
-                if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "bam");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "bas");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "bat");
-                    return conjugatedVerb;
-                }
-            case PLURAL:
-                if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "bamus");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "batis");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "bant");
-                    return conjugatedVerb;
-                }
-        }
+    switch (conjugation.Number) {
+        case SINGULAR:
+            if (conjugation.Person == FIRST_PERSON) {
+                conjugatedVerb = strcat(stem, "am");
+                break;
+            }
+            if (conjugation.Person == SECOND_PERSON) {
+                conjugatedVerb = strcat(stem, "as");
+                break;
+            }
+            if (conjugation.Person == THIRD_PERSON) {
+                conjugatedVerb = strcat(stem, "at");
+                break;
+            }
+        case PLURAL:
+            if (conjugation.Person == FIRST_PERSON) {
+                conjugatedVerb = strcat(stem, "amus");
+                break;
+            }
+            if (conjugation.Person == SECOND_PERSON) {
+                conjugatedVerb = strcat(stem, "atis");
+                break;
+            }
+            if (conjugation.Person == THIRD_PERSON) {
+                conjugatedVerb = strcat(stem, "ant");
+                break;
+            }
     }
-    if (isThirdConjugation(conjugation) || isFourthConjugation(conjugation)) {
-        switch (conjugation.Number) {
-            case SINGULAR:
-                if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "ebam");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "ebas");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "ebat");
-                    return conjugatedVerb;
-                }
-            case PLURAL:
-                if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "ebamus");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "ebatis");
-                    return conjugatedVerb;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "ebant");
-                    return conjugatedVerb;
-                }
-        }
-    }
-    return "";
+    return conjugatedVerb;
 }
 
 char *conjugateVerbToBeImperfect(struct verbToBe toBe) {
