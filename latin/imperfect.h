@@ -4,6 +4,28 @@
 #include "includes.h"
 #include "conjugation.h"
 
+char *getStemOfVerbImperfect(struct Conjugation conjugation) {
+    char *verb = (char *)malloc((strlen(conjugation.verb) + 2) * sizeof(char));
+    strcpy(verb, conjugation.verb);
+    int length = strlen(verb);
+
+    if (isFirstConjugation(conjugation) || isThirdConjugation(conjugation)) {
+        verb[length - 2] = '\0';
+        strcat(verb, "b");
+        return verb;
+    }
+    if (isThirdConjugation(conjugation)) {
+        verb[length - 3] = '\0';
+        strcat(verb, "eb");
+        return verb;
+    }
+    if (isFourthConjugation(conjugation)) {
+        verb[length - 2] = '\0';
+        strcat(verb, "eb");
+        return verb;
+    }
+}
+
 char *conjugateVerbImperfect(struct Conjugation conjugation) {
     char *stem = getStemOfVerb(conjugation);
     char *conjugatedVerb;
