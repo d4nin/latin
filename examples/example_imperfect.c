@@ -8,6 +8,15 @@ int main() {
     char *stemImperfect = getStemOfVerbImperfect(conjugation);
     printf("%s\n", stemImperfect);
 
+    // conjugate the verb in the imperfect tense
     char *conjugationImperfect = conjugateVerbImperfect(conjugation);
     printf("%s\n", conjugationImperfect);
+
+    // conjugate the verb in the imperfect tense per each conjugation
+    printf("%s\n", conjugateVerbFirstConjugation(conjugation));
+    printf("%s\n", conjugateVerbSecondConjugation(conjugation));
+    printf("%s\n", conjugateVerbThirdConjugation(conjugation));
+    printf("%s\n", conjugateVerbFourthConjugation(conjugation));
+
+    
 }
