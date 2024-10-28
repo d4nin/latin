@@ -169,6 +169,42 @@ char *conjugateVerbImperfectThirdConjugation(struct Conjugation conjugation) {
     return conjugatedVerb;
 }
 
+char *conjugateVerbImperfectFourthConjugation(struct Conjugation conjugation) {
+    char *stem = getStemOfVerbImperfect(conjugation);
+    char *conjugatedVerb;
+    if (isFourthConjugation(conjugation)) {
+        switch (conjugation.Number) {
+            case SINGULAR:
+            if (conjugation.Person == FIRST_PERSON) {
+                conjugatedVerb = strcat(stem, "am");
+                break;
+            }
+            if (conjugation.Person == SECOND_PERSON) {
+                conjugatedVerb = strcat(stem, "as");
+                break;
+            }
+            if (conjugation.Person == THIRD_PERSON) {
+                conjugatedVerb = strcat(stem, "at");
+                break;
+            }
+        case PLURAL:
+            if (conjugation.Person == FIRST_PERSON) {
+                conjugatedVerb = strcat(stem, "amus");
+                break;
+            }
+            if (conjugation.Person == SECOND_PERSON) {
+                conjugatedVerb = strcat(stem, "atis");
+                break;
+            }
+            if (conjugation.Person == THIRD_PERSON) {
+                conjugatedVerb = strcat(stem, "ant");
+                break;
+            }
+        }
+    } else conjugatedVerb = "";
+    return conjugatedVerb;
+}
+
 char *conjugateVerbToBeImperfect(struct verbToBe toBe) {
     char *stem = "era";
     char *conjugatedVerb = (char *)malloc((strlen(stem) + 4) * sizeof(char));
