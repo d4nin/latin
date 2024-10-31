@@ -148,4 +148,41 @@ char *conjugateVerbPerfectSecondType(struct Conjugation conjugation) {
     return "";
 }
 
+char *conjugateVerbPerfectThirdType(struct Conjugation conjugation) {
+    char *stem = getStemOfVerb(conjugation);
+    char *conjugatedVerb = (char *)malloc((strlen(conjugation.verb) + 5) * sizeof(char));
+
+    if (isThirdConjugation(conjugation)) {
+        switch (conjugation.Number) {
+            case SINGULAR:
+                if (conjugation.Person == FIRST_PERSON) {
+                    conjugatedVerb = strcat(stem, "i");
+                    break;
+                }
+                if (conjugation.Person == SECOND_PERSON) {
+                    conjugatedVerb = strcat(stem, "isti");
+                    break;
+                }
+                if (conjugation.Person == THIRD_PERSON) {
+                    conjugatedVerb = strcat(stem, "it");
+                    break;
+                }
+            case PLURAL:
+                if (conjugation.Person == FIRST_PERSON) {
+                    conjugatedVerb = strcat(stem, "imus");
+                    break;
+                }
+                if (conjugation.Person == SECOND_PERSON) {
+                    conjugatedVerb = strcat(stem, "istis");
+                    break;
+                }
+                if (conjugation.Person == THIRD_PERSON) {
+                    conjugatedVerb = strcat(stem, "erunt");
+                    break;
+                }
+        }
+    } else conjugatedVerb = "";
+    return conjugatedVerb;
+}
+
 #endif
