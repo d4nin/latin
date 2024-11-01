@@ -4,6 +4,11 @@
 int main() {
     struct Conjugation conjugation = {"absolvere", THIRD, THIRD_PERSON, PLURAL};
 
+    // conjugate the verb in the perfect tense
+    int perfectType = 1;
+    char *verbPerfect = conjugateVerbPerfect(conjugation, perfectType);
+    printf("%s\n", verbPerfect);
+
     // conjugate the verb in the first type of the perfect tense
     char *verbPerfectFirstType = conjugateVerbPerfectFirstType(conjugation);
     printf("%s\n", verbPerfectFirstType);
