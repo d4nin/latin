@@ -13,7 +13,7 @@ int main() {
     printf("%s\n", verbPerfectSecondType);
 
     // conjugate the verb in the third type of the perfect tense
-    char *verbPerfectThirdType = conjugateVerbPerfectThirdType(conjugation);
+    char *verbPerfectThirdType = conjugateVerbPerfectFourthType(conjugation);
     printf("%s\n", verbPerfectThirdType);
     return 0;
 }
