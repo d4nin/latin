@@ -28,6 +28,13 @@ char *getStemOfVerbPerfect(struct Conjugation conjugation, int perfectType) {
                 strcat(stem, "u");
                 break;
             } else return "";
+        case 4:
+            if (isThirdConjugation(conjugation)) {
+                stem[length - 3] = '\0';
+                break;
+            }
+        default:
+            stem = "";
     }
     return stem;
 }
@@ -105,8 +112,8 @@ char *conjugateVerbPerfectSecondType(struct Conjugation conjugation) {
     return conjugatedVerb;
 }
 
-char *conjugateVerbPerfectThirdType(struct Conjugation conjugation) {
-    char *stem = getStemOfVerb(conjugation);
+char *conjugateVerbPerfectFourthType(struct Conjugation conjugation) {
+    char *stem = getStemOfVerbPerfect(conjugation, 4);
     char *conjugatedVerb = (char *)malloc((strlen(conjugation.verb) + 5) * sizeof(char));
 
     if (isThirdConjugation(conjugation)) {
