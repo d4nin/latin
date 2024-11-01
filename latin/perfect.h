@@ -22,6 +22,12 @@ char *getStemOfVerbPerfect(struct Conjugation conjugation, int perfectType) {
                 strcat(stem, "iv");
                 break;
             }
+        case 2:
+            if (isSecondConjugation(conjugation) || isThirdConjugation(conjugation)) {
+                stem[length - 3] = '\0';
+                strcat(stem, "u");
+                break;
+            } else return "";
     }
     return stem;
 }
@@ -62,14 +68,10 @@ char *conjugateVerbPerfectFirstType(struct Conjugation conjugation) {
 }
 
 char *conjugateVerbPerfectSecondType(struct Conjugation conjugation) {
-    char *stem = getStemOfVerb(conjugation);
+    char *stem = getStemOfVerbPerfect(conjugation, 2);
     char *conjugatedVerb = (char *)malloc((strlen(conjugation.verb) + 5) * sizeof(char));
 
-    if (isSecondConjugation(conjugation)) {
-        int length = strlen(stem);
-        stem[length - 1] = '\0';
-        strcat(stem, "u");
-
+    if (isSecondConjugation(conjugation) || isThirdConjugation(conjugation)) {
         switch (conjugation.Number) {
             case SINGULAR:
                 if (conjugation.Person == FIRST_PERSON) {
@@ -100,39 +102,7 @@ char *conjugateVerbPerfectSecondType(struct Conjugation conjugation) {
         }
         return conjugatedVerb;
     }
-    if (isThirdConjugation(conjugation)) {
-        strcat(stem, "u");
-        switch (conjugation.Number) {
-            case SINGULAR:
-                if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "i");
-                    break;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "isti");
-                    break;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "it");
-                    break;
-                }
-            case PLURAL:
-                if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "imus");
-                    break;
-                }
-                if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "istis");
-                    break;
-                }
-                if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "erunt");
-                    break;
-                }
-        }
-        return conjugatedVerb;
-    }
-    return "";
+    return conjugatedVerb;
 }
 
 char *conjugateVerbPerfectThirdType(struct Conjugation conjugation) {
