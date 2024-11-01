@@ -149,4 +149,21 @@ char *conjugateVerbPerfectFourthType(struct Conjugation conjugation) {
     return conjugatedVerb;
 }
 
+char *conjugateVerbPerfect(struct Conjugation conjugation, int perfectType) {
+    char *conjugatedVerb;
+
+    switch (perfectType) {
+        case 1:
+            conjugatedVerb = conjugateVerbPerfectFirstType(conjugation);
+            break;
+        case 2:
+            conjugatedVerb = conjugateVerbPerfectSecondType(conjugation);
+            break;
+        case 4:
+            conjugatedVerb = conjugateVerbPerfectFourthType(conjugation);
+            break;
+    }
+    return conjugatedVerb;
+}
+
 #endif
