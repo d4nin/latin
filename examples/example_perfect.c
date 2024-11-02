@@ -3,6 +3,7 @@
 
 int main() {
     struct Conjugation conjugation = {"absolvere", THIRD, THIRD_PERSON, PLURAL};
+    struct verbToBe toBe = {THIRD_PERSON, PLURAL};
 
     // conjugate the verb in the perfect tense
     int perfectType = 1;
@@ -20,5 +21,9 @@ int main() {
     // conjugate the verb in the third type of the perfect tense
     char *verbPerfectThirdType = conjugateVerbPerfectFourthType(conjugation);
     printf("%s\n", verbPerfectThirdType);
+
+    // conjugate the verb to be in the perfect tense;
+    char *verbToBe = conjugateVerbToBePerfect(toBe);
+    printf("%s\n", verbToBe);
     return 0;
 }
