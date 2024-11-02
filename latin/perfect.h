@@ -166,4 +166,41 @@ char *conjugateVerbPerfect(struct Conjugation conjugation, int perfectType) {
     return conjugatedVerb;
 }
 
+char *conjugateVerbToBePerfect(struct verbToBe toBe) {
+    const char *stem = "fu";
+    char *conjugatedVerb = (char *)malloc((strlen(stem) + 6) * sizeof(char));
+
+    strcpy(conjugatedVerb, stem);
+
+    switch (toBe.Number) {
+        case SINGULAR:
+            if (toBe.Person == FIRST_PERSON) {
+                strcat(conjugatedVerb, "i");
+                break;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                strcat(conjugatedVerb, "isti");
+                break;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                strcat(conjugatedVerb, "it");
+                break;
+            }
+        case PLURAL:
+            if (toBe.Person == FIRST_PERSON) {
+                strcat(conjugatedVerb, "imus");
+                break;
+            }
+            if (toBe.Person == SECOND_PERSON) {
+                strcat(conjugatedVerb, "istis");
+                break;
+            }
+            if (toBe.Person == THIRD_PERSON) {
+                strcat(conjugatedVerb, "erunt");
+                break;
+            }
+    }
+    return conjugatedVerb;
+}
+
 #endif
