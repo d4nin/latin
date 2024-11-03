@@ -4,36 +4,60 @@
 #include "includes.h"
 #include "conjugation.h"
 
+char *getStemOfVerbFuture(struct Conjugation conjugation) {
+    char *stem = (char *)malloc((strlen(conjugation.verb) + 1) * sizeof(char));
+    strcpy(stem, conjugation.verb);
+    int length = strlen(stem);
+
+    if (isFirstConjugation(conjugation) || isSecondConjugation(conjugation)) {
+        stem[length - 2] = '\0';
+        strcat(stem, "b");
+    }
+    if (isThirdConjugation(conjugation)) {
+        stem[length - 3] = '\0';
+        if (conjugation.Person == FIRST_PERSON && conjugation.Number == SINGULAR)
+            strcat(stem, "a");
+        else strcat(stem, "e");
+    }
+    if (isFourthConjugation(conjugation)) {
+        stem[length - 2] = '\0';
+        if (conjugation.Person == FIRST_PERSON && conjugation.Number == SINGULAR)
+            strcat(stem, "a");
+        else strcat(stem, "e");
+    }
+    return stem;
+}
+
 char *conjugateVerbFuture(struct Conjugation conjugation) {
-    char *stem = getStemOfVerb(conjugation);
+    char *stem = getStemOfVerbFuture(conjugation);
     char *conjugatedVerb = "";
 
     if (isFirstConjugation(conjugation) || isSecondConjugation(conjugation)) {
         switch (conjugation.Number) {
             case SINGULAR:
                 if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "bo");
+                    conjugatedVerb = strcat(stem, "o");
                     return conjugatedVerb;
                 } 
                 if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "bis");
+                    conjugatedVerb = strcat(stem, "is");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "bit");
+                    conjugatedVerb = strcat(stem, "it");
                     return conjugatedVerb;
                 }
             case PLURAL:
                 if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "bimus");
+                    conjugatedVerb = strcat(stem, "imus");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "bitis");
+                    conjugatedVerb = strcat(stem, "itis");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "bunt");
+                    conjugatedVerb = strcat(stem, "unt");
                     return conjugatedVerb;
                 }
         }
@@ -42,28 +66,28 @@ char *conjugateVerbFuture(struct Conjugation conjugation) {
         switch (conjugation.Number) {
             case SINGULAR:
                 if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "am");
+                    conjugatedVerb = strcat(stem, "m");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "es");
+                    conjugatedVerb = strcat(stem, "s");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "et");
+                    conjugatedVerb = strcat(stem, "t");
                     return conjugatedVerb;
                 }
             case PLURAL:
                 if (conjugation.Person == FIRST_PERSON) {
-                    conjugatedVerb = strcat(stem, "emus");
+                    conjugatedVerb = strcat(stem, "mus");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == SECOND_PERSON) {
-                    conjugatedVerb = strcat(stem, "etis");
+                    conjugatedVerb = strcat(stem, "tis");
                     return conjugatedVerb;
                 }
                 if (conjugation.Person == THIRD_PERSON) {
-                    conjugatedVerb = strcat(stem, "ent");
+                    conjugatedVerb = strcat(stem, "nt");
                     return conjugatedVerb;
                 }
         }
