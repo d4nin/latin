@@ -611,4 +611,17 @@ char *declineNounFifthDeclension(struct declension fifth) {
     }
 }
 
+bool checkNounFirstDeclension(char *noun) {
+    char lastOne[2];
+    lastOne[1] = '\0';
+    int length = strlen(noun);
+
+    for (int i = 0; i < 1; i++)
+        lastOne[i] = noun[length - 1 + i];
+    
+    if (strcmp(lastOne, "a") == 0)
+        return true;
+    return false;
+}
+
 #endif
