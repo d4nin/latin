@@ -78,5 +78,11 @@ int main() {
     thirdDeclension();
     fourthDeclension();
     fifthDeclension();
+
+    // check if the noun is first declension (for *chars)
+    char *noun = "patria";
+    if (checkNounFirstDeclension(noun))
+        printf("yippy kay yay");
+    else printf("kill yourself");
     return 0;
 }
