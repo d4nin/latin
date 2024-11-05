@@ -624,4 +624,18 @@ bool checkNounFirstDeclension(char *noun) {
     return false;
 }
 
+bool checkNounSecondDeclension(char *noun) {
+    char lastTwo[3];
+    lastTwo[2] = '\0';
+    int length = strlen(noun);
+
+    for (int i = 0; i < 2; i++) 
+        lastTwo[i] = noun[length - 2 + i];
+    
+    if (strcmp(lastTwo, "us") == 0 || strcmp(lastTwo, "er") == 0 ||
+        strcmp(lastTwo, "ir") == 0 || strcmp(lastTwo, "um") == 0) 
+            return true;
+    return false;
+}
+
 #endif
