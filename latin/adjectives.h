@@ -6,6 +6,9 @@
 struct adjectives {
     char *noun;
     int type;
+    enum Gender gender;
+    enum Number number;
+    enum Case casus;
 };
 
 int getGenderOfAdjective(char *noun) {
@@ -56,6 +59,49 @@ char *getStemOfAdjective(struct adjectives adjective, char *noun) {
     if (gender == NEUTRUM && adjective.type == 2) {
         strcat(stem, "um");
         return stem;
+    }
+    return "";
+}
+
+char *declineAdjectiveFirstDeclension(struct adjectives adjective, char *noun) {
+    char *stem = getStemOfAdjective(adjective, noun);
+    char *conjugatedAdjective = "";
+    int length = strlen(stem);
+
+    if (adjective.number == SINGULAR) {
+        switch (adjective.casus) {
+            case NOMINATIVE:
+            case VOCATIVE:
+            case ABLATIVE:
+                conjugatedAdjective = stem;
+                return stem;
+            case GENITIVE:
+            case DATIVE:
+                conjugatedAdjective = strcat(stem, "e");
+                return stem;
+            case ACCUSATIVE:
+                conjugatedAdjective = strcat(stem, "m");
+                return stem;
+        }
+    }
+    if (adjective.number == PLURAL) {
+        switch (adjective.casus) {
+            case NOMINATIVE:
+            case VOCATIVE:
+                conjugatedAdjective = strcat(stem, "e");
+                return stem;
+            case DATIVE:
+            case ABLATIVE:
+                stem[length - 1] = '\0';
+                conjugatedAdjective = strcat(stem, "is");
+                return conjugatedAdjective;
+            case GENITIVE:
+                conjugatedAdjective = strcat(stem, "rum");
+                return conjugatedAdjective;  
+            case ACCUSATIVE:
+                conjugatedAdjective = strcat(stem, "s");
+                return conjugatedAdjective; 
+        }
     }
     return "";
 }
