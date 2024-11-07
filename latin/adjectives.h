@@ -5,7 +5,7 @@
 
 struct adjectives {
     char *noun;
-    int gender;
+    int type;
 };
 
 int getGenderOfAdjective(char *noun) {
@@ -35,6 +35,29 @@ int getGenderOfAdjective(char *noun) {
         return gender;
     }
     return -1;
+}
+
+char *getStemOfAdjective(struct adjectives adjective, char *noun) {
+    char *stem = (char *)malloc((strlen(adjective.noun) + 1) * sizeof(char));
+    strcpy(stem, adjective.noun);
+    int length = strlen(stem);
+    stem[length - 2] = '\0';
+
+    int gender = getGenderOfAdjective(noun);
+    
+    if (gender == FEMININUM && adjective.type == 1) {
+        strcat(stem, "a");
+        return stem;    
+    }
+    if (gender == MASCULINUM && adjective.type == 2) {
+        strcat(stem, "us");
+        return stem;
+    }
+    if (gender == NEUTRUM && adjective.type == 2) {
+        strcat(stem, "um");
+        return stem;
+    }
+    return "";
 }
 
 #endif
