@@ -152,6 +152,40 @@ char *declineAdjectiveSecondDeclension(struct adjectives adjective, char *noun) 
             }
         }
     }
+    if (getGenderOfAdjective(noun) == NEUTRUM) {
+        if (adjective.number == SINGULAR) {
+            switch (adjective.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    conjugatedAdjective = strcat(stem, "um");
+                    return conjugatedAdjective;
+                case DATIVE:
+                case ABLATIVE:
+                    conjugatedAdjective = strcat(stem, "o");
+                    return conjugatedAdjective;
+                case GENITIVE:
+                    conjugatedAdjective = strcat(stem, "i");
+                    return conjugatedAdjective;
+            }
+        }
+        if (adjective.number == PLURAL) {
+            switch (adjective.casus) {
+                case NOMINATIVE:
+                case ACCUSATIVE:
+                case VOCATIVE:
+                    conjugatedAdjective = strcat(stem, "a");
+                    return conjugatedAdjective;
+                case DATIVE:
+                case ABLATIVE:
+                    conjugatedAdjective = strcat(stem, "is");
+                    return conjugatedAdjective;
+                case GENITIVE:
+                    conjugatedAdjective = strcat(stem, "orum");
+                    return conjugatedAdjective;
+            }
+        }
+    }
     return "";
 }
 
