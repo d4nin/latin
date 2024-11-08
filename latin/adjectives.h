@@ -106,4 +106,53 @@ char *declineAdjectiveFirstDeclension(struct adjectives adjective, char *noun) {
     return "";
 }
 
+char *declineAdjectiveSecondDeclension(struct adjectives adjective, char *noun) {
+    char *stem = getStemOfAdjective(adjective, noun);
+    char *conjugatedAdjective = (char *)malloc((strlen(stem) + 4) * sizeof(char));
+    int length = strlen(stem);
+    stem[length - 2] = '\0';
+
+    if (getGenderOfAdjective(noun) == MASCULINUM) {
+        if (adjective.number == SINGULAR) {
+            switch (adjective.casus) {
+                case DATIVE:
+                case ABLATIVE:
+                    conjugatedAdjective = strcat(stem, "o");
+                    return conjugatedAdjective;
+                case NOMINATIVE:
+                    conjugatedAdjective = strcat(stem, "us");
+                    return conjugatedAdjective;
+                case GENITIVE:
+                    conjugatedAdjective = strcat(stem, "i");
+                    return conjugatedAdjective;
+                case ACCUSATIVE:
+                    conjugatedAdjective = strcat(stem, "um");
+                    return conjugatedAdjective;
+                case VOCATIVE:
+                    conjugatedAdjective = strcat(stem, "e");
+                    return conjugatedAdjective;
+            }
+        }
+        if (adjective.number == PLURAL) {
+            switch (adjective.casus) {
+                case NOMINATIVE:
+                case VOCATIVE:
+                    conjugatedAdjective = strcat(stem, "i");
+                    return conjugatedAdjective;
+                case DATIVE:
+                case ABLATIVE:
+                    conjugatedAdjective = strcat(stem, "is");
+                    return conjugatedAdjective;
+                case GENITIVE:
+                    conjugatedAdjective = strcat(stem, "orum");
+                    return conjugatedAdjective;
+                case ACCUSATIVE:
+                    conjugatedAdjective = strcat(stem, "os");
+                    return conjugatedAdjective;
+            }
+        }
+    }
+    return "";
+}
+
 #endif
