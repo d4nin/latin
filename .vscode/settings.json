@@ -5,6 +5,10 @@
         "pronouns.h": "c",
         "imperative.h": "c",
         "includes.h": "c",
-        "imperfect.h": "c"
+        "imperfect.h": "c",
+        "adjectives.h": "c",
+        "future.h": "c",
+        "passive.h": "c",
+        "perfect.h": "c"
     }
 }
