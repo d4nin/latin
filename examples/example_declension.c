@@ -18,7 +18,7 @@ void firstDeclension() {
 
 void secondDeclension() {
     // setting up noun of second declension
-    struct declensionSecond second = {"bellum", NEUTRUM, PLURAL, GENITIVE, 1};
+    struct declensionSecond second = {"populus", MASCULINUM, PLURAL, GENITIVE, 1};
     
     // check if the noun is of second declension
     if (isNounSecondDeclension(second))
@@ -78,11 +78,5 @@ int main() {
     thirdDeclension();
     fourthDeclension();
     fifthDeclension();
-
-    // check if the noun is first declension (for *chars)
-    char *noun = "patria";
-    if (checkNounFirstDeclension(noun))
-        printf("yippy kay yay");
-    else printf("kill yourself");
     return 0;
 }
